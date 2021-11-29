@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.portolink">
+    package="com.portolink.admin">
    <application
         android:label="portolink"
         android:icon="@mipmap/ic_launcher">

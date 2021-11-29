@@ -1,4 +1,4 @@
-package com.example.portolink
+package com.portolink.admin
 
 import io.flutter.embedding.android.FlutterActivity
 

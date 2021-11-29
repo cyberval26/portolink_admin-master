@@ -1,39 +1,31 @@
 {
-  "project_info": {
-    "project_number": "888718584951",
-    "project_id": "portolink-c7996",
-    "storage_bucket": "portolink-c7996.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:888718584951:android:457abb85f786c1750f6a72",
-        "android_client_info": {
-          "package_name": "com.portolink.admin"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "888718584951-119al60ebitnv6bqlvbu138h8p86qrvu.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBpy9F8s-09mDFNWzv70R6W5MSSyTi39Og"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "888718584951-119al60ebitnv6bqlvbu138h8p86qrvu.apps.googleusercontent.com",
-              "client_type": 3
+    "project_info": {
+        "project_number": "888718584951",
+        "project_id": "portolink-c7996",
+        "storage_bucket": "portolink-c7996.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:888718584951:android:457abb85f786c1750f6a72",
+            "android_client_info": {
+                "package_name": "com.portolink.admin"
             }
-          ]
+        },
+        "oauth_client": [{
+            "client_id": "888718584951-119al60ebitnv6bqlvbu138h8p86qrvu.apps.googleusercontent.com",
+            "client_type": 3
+        }],
+        "api_key": [{
+            "current_key": "AIzaSyBpy9F8s-09mDFNWzv70R6W5MSSyTi39Og"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                    "client_id": "888718584951-119al60ebitnv6bqlvbu138h8p86qrvu.apps.googleusercontent.com",
+                    "client_type": 3
+                }]
+            }
         }
-      }
-    }
-  ],
-  "configuration_version": "1"
+    }],
+    "configuration_version": "1"
 }
