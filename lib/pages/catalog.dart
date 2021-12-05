@@ -15,7 +15,11 @@ class _CatalogState extends State<Catalog> {
         title: Text("Catalog List"),
       ),
       body: Column(
-        children: [ElevatedButton(onPressed: () {}, child: Text("List"))],
+        children: [ElevatedButton(onPressed: () {}, child: Text("Upload"))],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }
