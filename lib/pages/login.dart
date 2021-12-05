@@ -18,6 +18,11 @@ class _LoginFormState extends State<LoginForm> {
               email: textEmailController.text,
               password: textPasswordController.text);
       print("login success for " + FirebaseAuth.instance.currentUser!.email!);
+      //print(FirebaseAuth.instance.currentUser!.displayName!);
+      if (FirebaseAuth.instance.currentUser!.displayName == null) {
+        print('user is not an admin');
+        FirebaseAuth.instance.signOut();
+      }
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -36,20 +41,23 @@ class _LoginFormState extends State<LoginForm> {
       appBar: AppBar(
         title: const Text("Login"),
       ),
-      body: Column(
-        children: [
-          TextField(
-            controller: textEmailController,
-            autocorrect: false,
-            decoration: const InputDecoration(labelText: "Email"),
-          ),
-          TextField(
-            controller: textPasswordController,
-            obscureText: true,
-            decoration: const InputDecoration(labelText: "Password"),
-          ),
-          ElevatedButton(onPressed: login, child: const Text("Login"))
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: textEmailController,
+              autocorrect: false,
+              decoration: const InputDecoration(labelText: "Email"),
+            ),
+            TextField(
+              controller: textPasswordController,
+              obscureText: true,
+              decoration: const InputDecoration(labelText: "Password"),
+            ),
+            ElevatedButton(onPressed: login, child: const Text("Login"))
+          ],
+        ),
       ),
     );
   }

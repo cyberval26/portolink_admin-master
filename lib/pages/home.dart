@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/profile');
+                    Navigator.pushNamed(context, '/register');
                   },
                   child: const Text("Register"),
                   style: ButtonStyle(
