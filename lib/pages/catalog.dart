@@ -10,6 +10,13 @@ class Catalog extends StatefulWidget {
 class _CatalogState extends State<Catalog> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Catalog List"),
+      ),
+      body: Column(
+        children: [ElevatedButton(onPressed: () {}, child: Text("List"))],
+      ),
+    );
   }
 }
