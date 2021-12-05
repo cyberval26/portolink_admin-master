@@ -8,6 +8,7 @@ part 'pages/register.dart';
 part 'pages/profile.dart';
 part 'pages/catalog.dart';
 part 'pages/requests.dart';
+part 'pages/addtemplate.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,6 +76,7 @@ class _AppState extends State<App> {
               '/catalog/new': (context) => Profile(),
               '/catalog/edit': (context) => Profile(),
               '/requests': (context) => Requests(),
+              '/addtemplate': (context) => AddTemplate(),
             },
           );
         }
