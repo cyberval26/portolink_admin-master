@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'main.dart';
 
 class User {
   String uid = "", email = "";
@@ -133,7 +133,6 @@ class _HomeState extends State<Home> {
       );
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

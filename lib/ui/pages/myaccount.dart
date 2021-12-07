@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'main.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);
@@ -17,9 +17,9 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
       ),
-      body: ElevatedButton(onPressed: logout, child: Text("Logout")),
+      body: ElevatedButton(onPressed: logout, child: const Text("Logout")),
     );
   }
 }

@@ -6,11 +6,9 @@ class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
-
 class _LoginFormState extends State<LoginForm> {
   final textEmailController = TextEditingController();
   final textPasswordController = TextEditingController();
-
   login() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance

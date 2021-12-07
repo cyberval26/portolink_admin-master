@@ -2,48 +2,38 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-part 'pages/home.dart';
-part 'pages/login.dart';
-part 'pages/register.dart';
-part 'pages/profile.dart';
-part 'pages/catalog.dart';
-part 'pages/requests.dart';
-part 'pages/addtemplate.dart';
+part 'ui/pages/home.dart';
+part 'ui/pages/login.dart';
+part 'ui/pages/register.dart';
+part 'ui/pages/myaccount.dart';
+part 'ui/pages/catalog.dart';
+part 'ui/pages/requests.dart';
+part 'ui/pages/addtemplate.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(App());
 }
-
 class App extends StatefulWidget {
-  // Create the initialization Future outside of `build`:
   @override
   _AppState createState() => _AppState();
 }
-
 class _AppState extends State<App> {
-  /// The future is part of the state of our widget. We should not call `initializeApp`
-  /// directly inside [build].
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
-        // Check for errors
         if (snapshot.hasError) {
           return Text(
             "ERROR: ${snapshot.error.toString()} ",
             textDirection: TextDirection.ltr,
           );
         }
-
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            title: 'Resepku',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               colorScheme: ColorScheme(
                 primary: Colors.blue.shade200,
@@ -60,11 +50,6 @@ class _AppState extends State<App> {
                 onSurface: Colors.black,
                 brightness: Brightness.light,
               ),
-              // elevatedButtonTheme: ElevatedButtonThemeData(
-              //   style: TextButton.styleFrom(
-              //       backgroundColor: Colors.teal.shade200,
-              //       textStyle: const TextStyle(color: Colors.white)),
-              // ),
             ),
             initialRoute: '/',
             routes: {
@@ -80,8 +65,6 @@ class _AppState extends State<App> {
             },
           );
         }
-
-        // Otherwise, show something whilst waiting for initialization to complete
         return const Text(
           "Loading ",
           textDirection: TextDirection.ltr,

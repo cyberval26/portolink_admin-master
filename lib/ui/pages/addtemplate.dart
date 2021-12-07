@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'ui/main.dart';
 
 class AddTemplate extends StatefulWidget {
   AddTemplate({Key? key}) : super(key: key);
