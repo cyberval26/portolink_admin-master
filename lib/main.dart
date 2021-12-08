@@ -1,14 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:portolink/ui/pages/pages.dart';
 
-part 'ui/pages/home.dart';
-part 'ui/pages/login.dart';
-part 'ui/pages/register.dart';
-part 'ui/pages/myaccount.dart';
-part 'ui/pages/catalog.dart';
-part 'ui/pages/requests.dart';
-part 'ui/pages/addtemplate.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,12 +50,12 @@ class _AppState extends State<App> {
               '/': (context) => Home(),
               '/login': (context) => LoginForm(),
               '/register': (context) => Register(),
-              '/profile': (context) => Profile(),
+              '/myaccount': (context) => MyAccount(),
               '/catalog': (context) => Catalog(),
               '/catalog/new': (context) => Profile(),
               '/catalog/edit': (context) => Profile(),
               '/requests': (context) => Requests(),
-              '/addtemplate': (context) => AddTemplate(),
+              AddTemplate.routeName: (context) => AddTemplate()
             },
           );
         }

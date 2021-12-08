@@ -1,7 +1,7 @@
-part of '../main.dart';
+part of 'pages.dart';
 
 class Catalog extends StatefulWidget {
-  Catalog({Key? key}) : super(key: key);
+  Catalog({Key key}) : super(key: key);
 
   @override
   _CatalogState createState() => _CatalogState();

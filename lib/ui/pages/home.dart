@@ -8,7 +8,7 @@ class User {
 }
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  Home({Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -25,11 +25,11 @@ class _HomeState extends State<Home> {
         var firebaseUser = FirebaseAuth.instance.currentUser;
         currentUser.loggedIn = firebaseUser != null;
         if (firebaseUser != null) {
-          currentUser.email = firebaseUser.email!;
+          currentUser.email = firebaseUser.email;
           currentUser.uid = firebaseUser.uid;
           currentUser.verified = firebaseUser.emailVerified;
         }
-        print(firebaseUser);
+        (firebaseUser);
       });
     });
   }

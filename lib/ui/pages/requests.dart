@@ -1,7 +1,7 @@
-part of '../main.dart';
+part of 'pages.dart';
 
 class Requests extends StatefulWidget {
-  Requests({Key? key}) : super(key: key);
+  Requests({Key key}) : super(key: key);
 
   @override
   _RequestsState createState() => _RequestsState();
