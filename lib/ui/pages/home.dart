@@ -1,4 +1,4 @@
-part of 'main.dart';
+part of 'pages.dart';
 
 class User {
   String uid = "", email = "";
@@ -6,17 +6,14 @@ class User {
 
   User();
 }
-
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+  const Home({Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   User currentUser = User();
-
   @override
   void initState() {
     super.initState();
@@ -33,7 +30,6 @@ class _HomeState extends State<Home> {
       });
     });
   }
-
   Widget getHomeContents() {
     if (currentUser.loggedIn) {
       return Column(

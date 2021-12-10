@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Portolink/ui/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:portolink/ui/pages/pages.dart';
 
 
 void main() {
@@ -52,8 +51,7 @@ class _AppState extends State<App> {
               '/register': (context) => Register(),
               '/myaccount': (context) => MyAccount(),
               '/catalog': (context) => Catalog(),
-              '/catalog/new': (context) => Profile(),
-              '/catalog/edit': (context) => Profile(),
+              '/addtemplate': (context) => AddTemplate(),
               '/requests': (context) => Requests(),
               AddTemplate.routeName: (context) => AddTemplate()
             },

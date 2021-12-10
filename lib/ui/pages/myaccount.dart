@@ -27,9 +27,18 @@ class _MyAccountState extends State<MyAccount> {
             }
             return new ListView(
                 children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                  Admins admins;if (doc.data()['uid'] == FirebaseAuth.instance.currentUser.uid) {
+                  if (doc.data()['uid'] == FirebaseAuth.instance.currentUser.uid) {
+                    admins = new Admins(
+                      doc.data()['uid'],
+                      doc.data()['aName'],
+                      doc.data()['aEmail'],
+                      doc.data()['aPass'],
+                      doc.data()['createdAt'],
+                      doc.data()['updateAt']
+                    );
                   }
-            }).toList());
+                }).toList()
+            );
           },  
         ));
   }
