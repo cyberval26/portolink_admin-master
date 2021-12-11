@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   User currentUser = User();
+  int bnbindex = 0;
 
   @override
   void initState() {
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  Widget getHomeContents() {
+  Widget getHome() {
     if (currentUser.loggedIn) {
       return Scaffold(
         appBar: AppBar(title: const Text("Portolink Admin")),
@@ -98,24 +99,32 @@ class _HomeState extends State<Home> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.home),
+            //   label: 'Home',
+            // ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+              icon: Icon(Icons.list),
+              label: 'Catalog',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.fastfood),
-              label: 'List',
+              icon: Icon(Icons.checklist),
+              label: 'Request',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.face),
               label: 'Profile',
             ),
           ],
-          // currentIndex: _selectedIndex,
+          currentIndex: bnbindex,
           // selectedItemColor: Colors.red,
           // unselectedItemColor: Colors.black87,
           // backgroundColor: Colors.orange,
-          // onTap: _onItemTapped,
+          onTap: (index) {
+            setState(() {
+              bnbindex = index;
+            });
+          },
           type: BottomNavigationBarType.fixed,
         ),
       );
@@ -130,6 +139,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return getHomeContents();
+    return getHome();
   }
 }
