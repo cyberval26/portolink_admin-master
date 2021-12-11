@@ -123,47 +123,7 @@ class _HomeState extends State<Home> {
       return Scaffold(
         appBar: AppBar(title: const Text("Portolink Admin")),
         body: Container(
-          constraints: const BoxConstraints.expand(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: SizedBox(
-                  width: 350,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: const Text("Login"),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.teal.shade200)),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  width: 350,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
-                      child: const Text("Register"),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.teal.shade200)),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+            constraints: const BoxConstraints.expand(), child: LoginForm()),
       );
     }
   }

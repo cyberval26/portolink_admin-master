@@ -23,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
         print('user is not an admin');
         FirebaseAuth.instance.signOut();
       }
-      Navigator.pop(context);
+      // Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -38,9 +38,9 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("Login"),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -55,7 +55,12 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: true,
               decoration: const InputDecoration(labelText: "Password"),
             ),
-            ElevatedButton(onPressed: login, child: const Text("Login"))
+            ElevatedButton(onPressed: login, child: const Text("Login")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: const Text("Register")),
           ],
         ),
       ),
