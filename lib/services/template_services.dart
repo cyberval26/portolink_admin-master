@@ -7,7 +7,7 @@ class TemplateServices {
   static Reference ref;
   static UploadTask uploadTask;
   static String imgUrl;
-  static Future<bool> addProduct(
+  static Future<bool> addTemplate(
       Templates templates, PickedFile imgFile) async {
         await Firebase.initializeApp();
         String dateNow = ActivityServices.dateNow();
@@ -30,7 +30,7 @@ class TemplateServices {
               return false;
             }
       }
-      static Future<bool> deleteProduct(String id) async {
+      static Future<bool> deleteTemplate(String id) async {
         bool result = true;
         await Firebase.initializeApp();
         await tCollection.doc(id).delete().then((value) {
