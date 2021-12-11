@@ -1,14 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-part 'pages/home.dart';
-part 'pages/login.dart';
-part 'pages/register.dart';
-part 'pages/profile.dart';
-part 'pages/catalog.dart';
-part 'pages/requests.dart';
-part 'pages/addtemplate.dart';
+import 'pages/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +36,7 @@ class _AppState extends State<App> {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
-            title: 'Resepku',
+            title: 'Portolink',
             theme: ThemeData(
               colorScheme: ColorScheme(
                 primary: Colors.blue.shade200,

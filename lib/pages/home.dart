@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'pages.dart';
 
 class User {
   String uid = "", email = "";

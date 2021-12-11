@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'pages.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);

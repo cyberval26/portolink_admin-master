@@ -1,4 +1,4 @@
-part of '../main.dart';
+part of 'pages.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key? key}) : super(key: key);
