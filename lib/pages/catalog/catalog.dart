@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class Catalog extends StatefulWidget {
   Catalog({Key? key}) : super(key: key);
@@ -11,14 +11,13 @@ class _CatalogState extends State<Catalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Catalog List"),
-      ),
       body: Column(
         children: [ElevatedButton(onPressed: () {}, child: Text("Upload"))],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/catalog/new');
+        },
         child: Icon(Icons.add),
       ),
     );

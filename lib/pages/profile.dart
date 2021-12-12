@@ -10,16 +10,10 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   logout() {
     FirebaseAuth.instance.signOut();
-    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Profile"),
-      ),
-      body: ElevatedButton(onPressed: logout, child: Text("Logout")),
-    );
+    return ElevatedButton(onPressed: logout, child: Text("Logout"));
   }
 }

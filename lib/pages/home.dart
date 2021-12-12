@@ -1,10 +1,10 @@
 part of 'pages.dart';
 
-class User {
+class Admin {
   String uid = "", email = "";
   bool verified = false, loggedIn = false;
 
-  User();
+  Admin();
 }
 
 class Home extends StatefulWidget {
@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  User currentUser = User();
+  Admin currentUser = Admin();
   int bnbindex = 0;
 
   @override
@@ -35,68 +35,33 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Widget getHomeContent() {
+    switch (bnbindex) {
+      case 0:
+        {
+          return Catalog();
+          // return Text(Provider.of<Counter>(context).name);
+        }
+      case 1:
+        {
+          return Requests();
+        }
+      case 2:
+        {
+          return Profile();
+        }
+      default:
+        {
+          return Text("Error 404");
+        }
+    }
+  }
+
   Widget getHome() {
     if (currentUser.loggedIn) {
       return Scaffold(
         appBar: AppBar(title: const Text("Portolink Admin")),
-        body: Container(
-          constraints: const BoxConstraints.expand(),
-          child: Column(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  width: 350,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/requests');
-                      },
-                      child: const Text("Request Check"),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.teal.shade200)),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  width: 350,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/catalog');
-                      },
-                      child: const Text("Catalog"),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.teal.shade200)),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  width: 350,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/profile');
-                      },
-                      child: const Text("My Account"),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.teal.shade200)),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        body: getHomeContent(),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             // BottomNavigationBarItem(

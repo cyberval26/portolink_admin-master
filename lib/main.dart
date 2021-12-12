@@ -62,14 +62,13 @@ class _AppState extends State<App> {
             initialRoute: '/',
             routes: {
               '/': (context) => Home(),
-              '/login': (context) => LoginForm(),
+              // '/login': (context) => LoginForm(),
               '/register': (context) => Register(),
-              '/profile': (context) => Profile(),
-              '/catalog': (context) => Catalog(),
-              '/catalog/new': (context) => Profile(),
+              // '/profile': (context) => Profile(),
+              // '/catalog': (context) => Catalog(),
+              '/catalog/new': (context) => NewCatalog(),
               '/catalog/edit': (context) => Profile(),
-              '/requests': (context) => Requests(),
-              '/addtemplate': (context) => AddTemplate(),
+              // '/requests': (context) => Requests(),
             },
           );
         }
