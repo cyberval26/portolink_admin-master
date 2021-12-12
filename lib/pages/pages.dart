@@ -14,3 +14,4 @@ part 'profile.dart';
 part 'catalog/catalog.dart';
 part 'catalog/new.dart';
 part 'requests.dart';
+part 'models.dart';

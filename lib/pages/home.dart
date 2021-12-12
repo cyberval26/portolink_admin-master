@@ -1,12 +1,5 @@
 part of 'pages.dart';
 
-class Admin {
-  String uid = "", email = "";
-  bool verified = false, loggedIn = false;
-
-  Admin();
-}
-
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
