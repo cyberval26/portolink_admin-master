@@ -1,144 +1,52 @@
 part of 'pages.dart';
 
-class User {
-  String uid = "", email = "";
-  bool verified = false, loggedIn = false;
-
-  User();
-}
-
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
   static const String routeName = "/home";
   @override
   _HomeState createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
-  User currentUser = User();
+  int _selectedIntex = 0;
+  static List<Widget> _widgetOptions = <Widget>[
+    const AddTemplate(),
+    Catalog(),
+    const MyAccount()
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIntex = index;
+    });
+  }
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance.authStateChanges().listen((event) {
-      setState(() {
-        var firebaseUser = FirebaseAuth.instance.currentUser;
-        currentUser.loggedIn = firebaseUser != null;
-        if (firebaseUser != null) {
-          currentUser.email = firebaseUser.email;
-          currentUser.uid = firebaseUser.uid;
-          currentUser.verified = firebaseUser.emailVerified;
-        }
-        (firebaseUser);
-      });
-    });
   }
-
-  Widget getHomeContents() {
-    if (currentUser.loggedIn) {
-      return Column(
-        children: [
-          Expanded(
-            child: SizedBox(
-              width: 350,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/requests');
-                  },
-                  child: const Text("Request Check"),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.teal.shade200)),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: 350,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/catalog');
-                  },
-                  child: const Text("Catalog"),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.teal.shade200)),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: 350,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/myaccount');
-                  },
-                  child: const Text("My Account"),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.teal.shade200)),
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SizedBox(
-              width: 350,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  child: const Text("Login"),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.teal.shade200)),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              width: 350,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/register');
-                  },
-                  child: const Text("Register"),
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.teal.shade200)),
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Portolink Admin")),
-      body: Container(
-          constraints: const BoxConstraints.expand(), child: getHomeContents()),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIntex)
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.note_add_rounded),
+            label: 'Add Template'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt_rounded),
+            label: 'Catalog'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: 'My Account'
+          ),
+        ],
+        currentIndex: _selectedIntex,
+        onTap: _onItemTapped,
+        elevation: 0
+      ),
     );
   }
 }

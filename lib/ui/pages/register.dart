@@ -6,7 +6,6 @@ class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
-
 class _RegisterState extends State<Register> {
   final textEmailController = TextEditingController();
   final textPasswordController = TextEditingController();
@@ -18,7 +17,7 @@ class _RegisterState extends State<Register> {
               email: textEmailController.text,
               password: textPasswordController.text);
 
-      userCredential.user.updateDisplayName("admin");
+      userCredential.user!.updateDisplayName("admin");
 
       textEmailController.text = "";
       textPasswordController.text = "";
