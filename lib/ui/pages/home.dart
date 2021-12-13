@@ -6,12 +6,14 @@ class User {
 
   User();
 }
+
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
-
+  static const String routeName = "/home";
   @override
   _HomeState createState() => _HomeState();
 }
+
 class _HomeState extends State<Home> {
   User currentUser = User();
   @override
@@ -30,6 +32,7 @@ class _HomeState extends State<Home> {
       });
     });
   }
+
   Widget getHomeContents() {
     if (currentUser.loggedIn) {
       return Column(
@@ -75,7 +78,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(10.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/profile');
+                    Navigator.pushNamed(context, '/myaccount');
                   },
                   child: const Text("My Account"),
                   style: ButtonStyle(
@@ -129,6 +132,7 @@ class _HomeState extends State<Home> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

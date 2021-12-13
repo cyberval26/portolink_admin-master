@@ -1,8 +1,8 @@
 part of 'pages.dart';
 
 class LoginForm extends StatefulWidget {
-  LoginForm({Key key}) : super(key: key);
-
+  const LoginForm({Key key}) : super(key: key);
+  static const String routeName = "/login";
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -32,7 +32,6 @@ class _LoginFormState extends State<LoginForm> {
       print(e);
     } finally {}
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

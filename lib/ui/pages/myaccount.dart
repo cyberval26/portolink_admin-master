@@ -25,18 +25,20 @@ class _MyAccountState extends State<MyAccount> {
             else if (snapshot.connectionState == ConnectionState.waiting) {
               return ActivityServices.loadings();
             }
-            return new ListView(
+            return  ListView(
                 children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                  if (doc.data()['uid'] == FirebaseAuth.instance.currentUser.uid) {
-                    admins = new Admins(
-                      doc.data()['uid'],
-                      doc.data()['aName'],
-                      doc.data()['aEmail'],
-                      doc.data()['aPass'],
-                      doc.data()['createdAt'],
-                      doc.data()['updateAt']
+                  Admins admins;
+                  if (doc['uid'] == FirebaseAuth.instance.currentUser.uid) {
+                    admins = Admins(
+                      doc['uid'],
+                      doc['aName'],
+                      doc['aEmail'],
+                      doc['aPass'],
+                      doc['createdAt'],
+                      doc['updateAt']
                     );
                   }
+                  return AccountView(admins: admins);
                 }).toList()
             );
           },  
@@ -53,19 +55,3 @@ class _MyAccountState extends State<MyAccount> {
     );
   }
 }
-// class _MyAccountState extends State<MyAccount > {
-//   logout() {
-//     FirebaseAuth.instance.signOut();
-//     Navigator.pop(context);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("MyAccount "),
-//       ),
-//       body: ElevatedButton(onPressed: logout, child: const Text("Logout")),
-//     );
-//   }
-// }

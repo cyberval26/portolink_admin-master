@@ -1,66 +1,38 @@
+import 'dart:io';
+
+import 'package:Portolink/shared/shared.dart';
 import 'package:Portolink/ui/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
-void main() {
+void enablePlatformOverrideForDesktop() {
+  if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  }
+}
+void main() async {
+  enablePlatformOverrideForDesktop();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  await Firebase.initializeApp();
+  runApp(const MyApp());
 }
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
-class _AppState extends State<App> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initialization,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Text(
-            "ERROR: ${snapshot.error.toString()} ",
-            textDirection: TextDirection.ltr,
-          );
-        }
-        if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              colorScheme: ColorScheme(
-                primary: Colors.blue.shade200,
-                onPrimary: Colors.black,
-                primaryVariant: Colors.blue.shade200,
-                background: Colors.red,
-                onBackground: Colors.black,
-                secondary: Colors.red,
-                onSecondary: Colors.white,
-                secondaryVariant: Colors.deepOrange,
-                error: Colors.black,
-                onError: Colors.white,
-                surface: Colors.white,
-                onSurface: Colors.black,
-                brightness: Brightness.light,
-              ),
-            ),
-            initialRoute: '/',
-            routes: {
-              '/': (context) => Home(),
-              '/login': (context) => LoginForm(),
-              '/register': (context) => Register(),
-              '/myaccount': (context) => MyAccount(),
-              '/catalog': (context) => Catalog(),
-              '/addtemplate': (context) => AddTemplate(),
-              '/requests': (context) => Requests(),
-              AddTemplate.routeName: (context) => AddTemplate()
-            },
-          );
-        }
-        return const Text(
-          "Loading ",
-          textDirection: TextDirection.ltr,
-        );
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Portolink",
+      theme: MyTheme.lightTheme(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Splash(),
+        Splash.routeName: (context) => const Splash(),
+        LoginForm.routeName: (context) => const LoginForm(),
+        Home.routeName: (context) => const Home(),
+        Register.routeName: (context) => Register(),
       },
     );
   }

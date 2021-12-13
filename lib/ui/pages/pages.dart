@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:Portolink/services/services.dart';
+import 'package:Portolink/ui/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,3 +15,4 @@ part 'catalog.dart';
 part 'requests.dart';
 part 'addtemplate.dart';
 part 'home.dart';
+part 'splash.dart';
