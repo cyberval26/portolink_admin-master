@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class Admins extends Equatable{
+class Admins {
   final String uid;
   final String aName;
   final String aEmail;
@@ -16,7 +16,6 @@ class Admins extends Equatable{
     this.createdAt,
     this.updateAt,
   );
-  @override
   List<Object> get props => [
         uid,
         aName,

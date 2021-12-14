@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class Templates extends Equatable {
+class Templates {
   final String tId;
   final String tName;
   final String tDesc;
@@ -14,7 +14,6 @@ class Templates extends Equatable {
     this.tPrice,
     this.tPhoto,
   );
-  @override
   List<Object> get props => [
         tId,
         tName,

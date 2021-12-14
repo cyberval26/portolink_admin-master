@@ -7,7 +7,6 @@ class ActivityServices {
     String result = formatter.format(now);
     return result;
   }
-
   static void showToast(String msg, Color mycolor) {
     Fluttertoast.showToast(
         msg: msg,
@@ -17,7 +16,6 @@ class ActivityServices {
         textColor: Colors.black,
         fontSize: 14);
   }
-
   static Container loadings() {
     return Container(
       alignment: Alignment.center,
@@ -27,7 +25,6 @@ class ActivityServices {
       child: const SpinKitFadingCircle(size: 50, color: Colors.teal),
     );
   }
-
   static String toIDR(String price) {
     final priceFormat = NumberFormat.currency(locale: 'ID');
     return priceFormat.format(double.parse(price));

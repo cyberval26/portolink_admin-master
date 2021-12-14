@@ -113,7 +113,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = true;
                                 });
-                                Admins admins = new Admins("", ctrlName.text,
+                                Admins admins = Admins("", ctrlName.text,
                                     ctrlEmail.text, ctrlPassword.text, "", "");
                                 String msg = await AuthServices.signUp(admins);
                                 // await AuthServices.signUp(users).then((value) {
