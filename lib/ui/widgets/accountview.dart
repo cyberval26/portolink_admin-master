@@ -1,10 +1,8 @@
 part of 'widgets.dart';
 
 class AccountView extends StatefulWidget {
+  const AccountView({Key key, this.admins}) : super(key: key);
   final Admins admins;
-  // ignore_for_file: prefer_const_constructors_in_immutables
-  // ignore: use_key_in_widget_constructors
-  AccountView({this.admins});
   @override
   _AccountViewState createState() => _AccountViewState();
 }
@@ -28,7 +26,7 @@ class _AccountViewState extends State<AccountView> {
                   children: [
                     const Icon(Icons.person, color: Colors.black, size: 50),
                     Text(admins.aName, style: const TextStyle(fontSize: 30))
-                  ],
+                  ]
                 ),
                const  SizedBox(
                   height: 20

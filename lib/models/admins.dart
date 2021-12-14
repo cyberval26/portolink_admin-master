@@ -23,5 +23,5 @@ class Admins {
         aPass,
         createdAt,
         updateAt,
-      ];
+  ];
 }

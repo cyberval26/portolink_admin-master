@@ -14,7 +14,8 @@ class ActivityServices {
         gravity: ToastGravity.BOTTOM,
         backgroundColor: mycolor,
         textColor: Colors.black,
-        fontSize: 14);
+        fontSize: 14
+    );
   }
   static Container loadings() {
     return Container(
@@ -22,7 +23,7 @@ class ActivityServices {
       width: double.infinity,
       height: double.infinity,
       color: Colors.black26,
-      child: const SpinKitFadingCircle(size: 50, color: Colors.teal),
+      child: const SpinKitFadingCircle(size: 50, color: Colors.teal)
     );
   }
   static String toIDR(String price) {

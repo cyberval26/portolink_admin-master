@@ -20,5 +20,5 @@ class Templates {
         tDesc,
         tPrice,
         tPhoto,
-      ];
+  ];
 }
