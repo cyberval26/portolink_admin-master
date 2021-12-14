@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         Splash.routeName: (context) => const Splash(),
         LoginForm.routeName: (context) => const LoginForm(),
         Home.routeName: (context) => const Home(),
-        Register.routeName: (context) => Register(),
+        Register.routeName: (context) => const Register(),
       },
     );
   }
-}
+} 
