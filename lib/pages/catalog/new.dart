@@ -70,7 +70,11 @@ class _NewCatalogState extends State<NewCatalog> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            ElevatedButton(onPressed: pickImage, child: Text('Upload image')),
+            ElevatedButton(
+                onPressed: () {
+                  pickImage();
+                },
+                child: Text('Upload image')),
             TextField(
               controller: textTemplateNameController,
               autocorrect: false,
@@ -90,7 +94,11 @@ class _NewCatalogState extends State<NewCatalog> {
               maxLines: null,
               maxLength: null,
             ),
-            ElevatedButton(onPressed: submit, child: Text('Submit'))
+            ElevatedButton(
+                onPressed: () {
+                  submit();
+                },
+                child: Text('Submit'))
           ],
         ),
       ),
