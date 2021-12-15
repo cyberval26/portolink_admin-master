@@ -22,8 +22,8 @@ class ActivityServices {
       alignment: Alignment.center,
       width: double.infinity,
       height: double.infinity,
-      color: Colors.transparent,
-      child: const SpinKitFadingCircle(size: 50, color: Colors.teal)
+      color: Colors.black54,
+      child:  const SpinKitRipple(size: 500, color: Color(0xFF14D7F3))
     );
   }
   static String toIDR(String price) {

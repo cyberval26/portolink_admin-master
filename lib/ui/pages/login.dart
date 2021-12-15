@@ -93,12 +93,12 @@ class _LoginFormState extends State<LoginForm> {
                                 });
                                 String msg = await AuthServices.signIn(
                                     ctrlEmail.text, ctrlPassword.text);
-                                if (msg == "success") {
+                                if (msg == "Success") {
                                   setState(() {
                                     isLoading = false;
                                   });
                                   ActivityServices.showToast(
-                                      "Login Success", Colors.grey);
+                                      "Login Success", Colors.grey[400]);
                                   Navigator.pushReplacementNamed(
                                       context, Home.routeName);
                                 } else {

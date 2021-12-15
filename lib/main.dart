@@ -1,7 +1,6 @@
 import 'dart:io';
-
-import 'package:Portolink/shared/shared.dart';
-import 'package:Portolink/ui/pages/pages.dart';
+import 'package:portolink/shared/shared.dart';
+import 'package:portolink/ui/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Splash(),
-        Splash.routeName: (context) => const Splash(),
         LoginForm.routeName: (context) => const LoginForm(),
         Home.routeName: (context) => const Home(),
         Register.routeName: (context) => const Register(),

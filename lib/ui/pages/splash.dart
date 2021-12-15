@@ -21,7 +21,7 @@ class _SplashState extends State<Splash> {
     if (auth.currentUser != null) {
       Navigator.pushReplacementNamed(context, Home.routeName);
       ActivityServices.showToast(
-          "Welcome Back " + auth.currentUser.email, Colors.white);
+          "Welcome Back " + auth.currentUser.email, Colors.grey[300]);
     } else {
       Navigator.pushReplacementNamed(context, LoginForm.routeName);
     }

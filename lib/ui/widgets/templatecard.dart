@@ -23,10 +23,10 @@ class _TemplateCardState extends State<TemplateCard> {
         child: ListTile(
           leading: CircleAvatar(
             radius: 24,
-            backgroundImage: NetworkImage(templates.tPhoto)
+            backgroundImage: NetworkImage(templates.photo)
           ),
           title: Text(
-            templates.tName,
+            templates.name,
             style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.bold),
@@ -34,7 +34,7 @@ class _TemplateCardState extends State<TemplateCard> {
               softWrap: true
           ),
           subtitle: Text(
-            ActivityServices.toIDR(templates.tPrice),
+            ActivityServices.toIDR(templates.price),
             style: const TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.normal),
@@ -59,22 +59,22 @@ class _TemplateCardState extends State<TemplateCard> {
                             Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(templates.tName, 
+                            Text(templates.name, 
                               style: const TextStyle(
                                 fontSize: 50)
                             ),
                             const SizedBox(
                               height: 24
                             ),
-                            Image.network(templates.tPhoto),
+                            Image.network(templates.photo),
                             const SizedBox(
                               height: 48
                             ),
-                            Text("Description : " + templates.tDesc),
+                            Text("Description : " + templates.desc),
                             const SizedBox(
                               height: 24
                             ),
-                            Text("Price: " + templates.tPrice),
+                            Text("Price: " + templates.price),
                             const SizedBox(
                               height: 24
                             ),
@@ -82,7 +82,7 @@ class _TemplateCardState extends State<TemplateCard> {
                               icon: const Icon(CupertinoIcons.trash_fill),
                               label: const Text("Delete Data"),
                               onPressed: () async {
-                                bool result = await TemplateServices.deleteTemplate(templates.tId);
+                                bool result = await TemplateServices.deleteTemplate(templates.tid);
                                 if(result){
                                   ActivityServices.showToast("Delete Success", Colors.green);
                                 } else {

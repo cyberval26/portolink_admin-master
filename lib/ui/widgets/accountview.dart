@@ -12,7 +12,7 @@ class _AccountViewState extends State<AccountView> {
   Widget build(BuildContext context) {
     Admins admins = widget.admins;
     if (admins == null) {
-      ActivityServices.showToast("Can't load your profile", Colors.red);
+      ActivityServices.showToast("Can't load your profile", const Color(0xFFFF0000));
       return Container();
     }
     return Stack(
@@ -33,7 +33,7 @@ class _AccountViewState extends State<AccountView> {
                     color: Colors.black54
                   ),
                   Text(
-                    "" + admins.aName,
+                    "" + admins.name,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 24)
                   ),
@@ -48,7 +48,7 @@ class _AccountViewState extends State<AccountView> {
                     color: Colors.black54
                   ),
                   Text(
-                    "" + admins.aEmail,
+                    "" + admins.email,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 24)
                   ),
@@ -69,14 +69,14 @@ class _AccountViewState extends State<AccountView> {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToast("Logout Success", Colors.green);
+                  ActivityServices.showToast("Logout Success", Colors.grey[300]);
                   Navigator.pushReplacementNamed(
                       context, LoginForm.routeName);
                 } else {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToast("Logout Failed", Colors.red);
+                  ActivityServices.showToast("Logout Failed", const Color(0xFFFF0000));
                 }
               });
             },
