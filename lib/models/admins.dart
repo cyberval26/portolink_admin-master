@@ -2,26 +2,26 @@ part of 'models.dart';
 
 class Admins {
   final String uid;
-  final String aName;
-  final String aEmail;
-  final String aPass;
+  final String name;
+  final String email;
+  final String pass;
   final String createdAt;
-  final String updateAt;
+  final String updatedAt;
 
   const Admins(
     this.uid,
-    this.aName,
-    this.aEmail,
-    this.aPass,
+    this.name,
+    this.email,
+    this.pass,
     this.createdAt,
-    this.updateAt,
+    this.updatedAt,
   );
   List<Object> get props => [
-        uid,
-        aName,
-        aEmail,
-        aPass,
-        createdAt,
-        updateAt,
+    uid,
+    name,
+    email,
+    pass,
+    createdAt,
+    updatedAt,
   ];
 }

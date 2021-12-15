@@ -2,7 +2,7 @@ part of 'services.dart';
 
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference admCollection = FirebaseFirestore.instance.collection("admins");
+  static CollectionReference admCollection = FirebaseFirestore.instance.collection("Admins");
   static DocumentReference admDoc;
   static Future<String> signUp(Admins admins) async {
     await Firebase.initializeApp();
@@ -10,14 +10,14 @@ class AuthServices {
     String token;
     String uid;
     String msg;
-    UserCredential admCredential = await auth.createUserWithEmailAndPassword(email: admins.aEmail, password: admins.aPass);
+    UserCredential admCredential = await auth.createUserWithEmailAndPassword(email: admins.email, password: admins.pass);
     uid = admCredential.user.uid;
     token = await FirebaseMessaging.instance.getToken();
     await admCollection.doc(uid).set({
       'uid': uid,
-      'name': admins.aName,
-      'email': admins.aEmail,
-      'password': admins.aPass,
+      'name': admins.name,
+      'email': admins.email,
+      'pass': admins.pass,
       'token': token,
       'createdAt': dateNow,
       'updatedAt': dateNow
@@ -43,7 +43,7 @@ class AuthServices {
       'token': token,
       'updatedAt': dateNow
     }).then((value) {
-      msg = "success";
+      msg = "Success";
     }).catchError((onError) {
       msg = onError;
     });

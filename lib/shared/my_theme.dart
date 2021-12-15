@@ -5,7 +5,7 @@ class MyTheme{
     return ThemeData(
       backgroundColor: Colors.white,
       scaffoldBackgroundColor: Colors.white,
-      primaryColor: Colors.teal[800],
+      primaryColor: const Color(0xFF14D7F3),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       fontFamily: GoogleFonts.permanentMarker().fontFamily
@@ -15,7 +15,7 @@ class MyTheme{
     return ThemeData(
       backgroundColor: Colors.black,
       scaffoldBackgroundColor: Colors.black,
-      primaryColor: Colors.teal[800],
+      primaryColor: const Color(0xFF14D7F3),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.dark,
       fontFamily: GoogleFonts.permanentMarker().fontFamily

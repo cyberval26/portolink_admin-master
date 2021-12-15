@@ -117,14 +117,18 @@ class _RegisterState extends State<Register> {
                                     ctrlEmail.text, ctrlPassword.text, "", "");
                                 String msg = await AuthServices.signUp(admins);
                                 // await AuthServices.signUp(users).then((value) {
-                                if (msg == "success") {
+                                if (msg == "Success") {
                                   setState(() {
                                     isLoading = false;
                                   });
                                   ActivityServices.showToast(
                                       "Register Success", Colors.green);
-                                  Navigator.pushNamed(context, LoginForm.routeName);
+                                  Navigator.pushReplacementNamed(
+                                    context, LoginForm.routeName);
                                 } else {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                   ActivityServices.showToast(msg, Colors.red);
                                   // Navigator.pushNamed(context, Login.routeName);
                                 }

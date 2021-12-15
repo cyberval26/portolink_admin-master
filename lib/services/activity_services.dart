@@ -22,7 +22,7 @@ class ActivityServices {
       alignment: Alignment.center,
       width: double.infinity,
       height: double.infinity,
-      color: Colors.black26,
+      color: Colors.transparent,
       child: const SpinKitFadingCircle(size: 50, color: Colors.teal)
     );
   }

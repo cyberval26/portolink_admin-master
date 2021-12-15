@@ -11,19 +11,19 @@ class TemplateServices {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     tDoc = await tCollection.add({
-      'tId': templates.tId,
-      'tName': templates.tName,
-      'tDesc': templates.tDesc,
-      'tPrice': templates.tPrice,
-      'tPhoto': templates.tPhoto,
+      'tid': templates.tid,
+      'name': templates.name,
+      'desc': templates.desc,
+      'price': templates.price,
+      'photo': templates.photo,
       'createdAt': dateNow,
-      'updateAt': dateNow
+      'updatedAt': dateNow
     });
     if (tDoc != null) {
       ref = FirebaseStorage.instance.ref().child("images").child(tDoc.id + ".jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
-      tCollection.doc(tDoc.id).update({'tId': tDoc.id, 'tPhoto': imgUrl});
+      tCollection.doc(tDoc.id).update({'tid': tDoc.id, 'photo': imgUrl});
       return true;
     } else {
         return false;

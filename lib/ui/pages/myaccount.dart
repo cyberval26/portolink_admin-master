@@ -34,7 +34,7 @@ class _MyAccountState extends State<MyAccount> {
                     doc['aEmail'],
                     doc['aPass'],
                     doc['createdAt'],
-                    doc['updateAt']
+                    doc['updatedAt']
                   );
                 }
                 return AccountView(admins: admins);
