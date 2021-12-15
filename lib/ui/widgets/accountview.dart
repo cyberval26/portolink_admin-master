@@ -11,68 +11,85 @@ class _AccountViewState extends State<AccountView> {
   @override
   Widget build(BuildContext context) {
     Admins admins = widget.admins;
-    return Column(
-        children: [
-          Container(
-            alignment: Alignment.topCenter,
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                const SizedBox(
-                  height: 200
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.person, color: Colors.black, size: 50),
-                    Text(admins.aName, style: const TextStyle(fontSize: 30))
-                  ]
-                ),
-               const  SizedBox(
-                  height: 20
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.email, color: Colors.black, size: 50),
-                    Text(admins.aEmail, style: const TextStyle(fontSize: 30))
-                  ],
-                ),
-                const SizedBox(
-                  height: 200
-                )
-              ]
-            ),
+    if (admins == null) {
+      ActivityServices.showToast("Can't load your profile", Colors.red);
+      return Container();
+    }
+    return Stack(
+      children: [
+        Container(
+          alignment: Alignment.topCenter,
+          child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20.0),
+            children: [
+              Image.asset("assets/images/portolink.png", height: 300),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.person,
+                    color: Colors.black54
+                  ),
+                  Text(
+                    "" + admins.aName,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 24)
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.email,
+                    color: Colors.black54
+                  ),
+                  Text(
+                    "" + admins.aEmail,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 24)
+                  ),
+                ],
+              ),
+            ],
           ),
-          Container(
+        ),
+        Container(
           alignment: Alignment.bottomCenter,
           child: ElevatedButton.icon(
-              onPressed: () async {
-                setState(() {
-                  isLoading = true;
-                });
-                await AuthServices.signOut().then((value) {
-                  if (value == true) {
-                    setState(() {
-                      isLoading = false;
-                    });
-                    ActivityServices.showToast("Logout Success", Colors.green);
-                    Navigator.pushReplacementNamed(context, '/login');
-                  } else {
-                    setState(() {
-                      isLoading = false;
-                    });
-                    ActivityServices.showToast("Logout Failed", Colors.red);
-                  }
-                });
-              },
-              icon: const Icon(Icons.logout),
-              label: const Text("Logout"),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                elevation: 0,
-              )),
+            onPressed: () async {
+              setState(() {
+                isLoading = true;
+              });
+              await AuthServices.signOut().then((value) {
+                if (value == true) {
+                  setState(() {
+                    isLoading = false;
+                  });
+                  ActivityServices.showToast("Logout Success", Colors.green);
+                  Navigator.pushReplacementNamed(
+                      context, LoginForm.routeName);
+                } else {
+                  setState(() {
+                    isLoading = false;
+                  });
+                  ActivityServices.showToast("Logout Failed", Colors.red);
+                }
+              });
+            },
+            icon: const Icon(Icons.logout),
+            label: const Text("Logout"),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.teal[200],
+              onPrimary: Colors.white,
+              elevation: 4
+            )
+          ),
         ),
-      ]);
+      ],
+    );
   }
 }
