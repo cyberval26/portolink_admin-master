@@ -7,7 +7,6 @@ class MyAccount extends StatefulWidget {
 }
 class _MyAccountState extends State<MyAccount> {
   bool isLoading = false;
-  String uid = FirebaseAuth.instance.currentUser.uid;
   CollectionReference admCollection = FirebaseFirestore.instance.collection("admins");
   Widget buildBody() {
     return Container(
@@ -27,12 +26,12 @@ class _MyAccountState extends State<MyAccount> {
             return Stack(
               children: snapshot.data.docs.map((DocumentSnapshot doc) {
                 Admins admins;
-                if (doc['uid'] == FirebaseAuth.instance.currentUser.uid) {
+                if (doc['aid'] == FirebaseAuth.instance.currentUser.uid) {
                   admins = Admins(
-                    doc['uid'],
-                    doc['aName'],
-                    doc['aEmail'],
-                    doc['aPass'],
+                    doc['aid'],
+                    doc['name'],
+                    doc['email'],
+                    doc['pass'],
                     doc['createdAt'],
                     doc['updatedAt']
                   );

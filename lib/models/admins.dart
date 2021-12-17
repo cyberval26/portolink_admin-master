@@ -1,7 +1,7 @@
 part of 'models.dart';
 
 class Admins {
-  final String uid;
+  final String aid;
   final String name;
   final String email;
   final String pass;
@@ -9,7 +9,7 @@ class Admins {
   final String updatedAt;
 
   const Admins(
-    this.uid,
+    this.aid,
     this.name,
     this.email,
     this.pass,
@@ -17,7 +17,7 @@ class Admins {
     this.updatedAt,
   );
   List<Object> get props => [
-    uid,
+    aid,
     name,
     email,
     pass,

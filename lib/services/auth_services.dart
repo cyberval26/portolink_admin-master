@@ -8,13 +8,13 @@ class AuthServices {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     String token;
-    String uid;
+    String aid;
     String msg;
     UserCredential admCredential = await auth.createUserWithEmailAndPassword(email: admins.email, password: admins.pass);
-    uid = admCredential.user.uid;
+    aid = admCredential.user.uid;
     token = await FirebaseMessaging.instance.getToken();
-    await admCollection.doc(uid).set({
-      'uid': uid,
+    await admCollection.doc(aid).set({
+      'aid': aid,
       'name': admins.name,
       'email': admins.email,
       'pass': admins.pass,
@@ -32,13 +32,13 @@ class AuthServices {
   static Future<String> signIn(String email, String password) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
-    String uid;
+    String aid;
     String msg;
     String token;
     UserCredential admCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
-    uid = admCredential.user.uid;
+    aid = admCredential.user.uid;
     token = await FirebaseMessaging.instance.getToken();
-    await admCollection.doc(uid).update({
+    await admCollection.doc(aid).update({
       'isOn': '1',
       'token': token,
       'updatedAt': dateNow
@@ -52,9 +52,9 @@ class AuthServices {
   static Future<bool> signOut() async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
-    String uid = auth.currentUser.uid;
+    String aid = auth.currentUser.uid;
     await auth.signOut().whenComplete(() {
-      admCollection.doc(uid).update({
+      admCollection.doc(aid).update({
         'isOn': '0',
         'token': '-',
         'updatedAt': dateNow

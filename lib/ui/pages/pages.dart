@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:portolink/services/services.dart';
+import 'package:portolink/shared/shared.dart';
 import 'package:portolink/ui/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';

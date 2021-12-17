@@ -12,7 +12,7 @@ class _AccountViewState extends State<AccountView> {
   Widget build(BuildContext context) {
     Admins admins = widget.admins;
     if (admins == null) {
-      ActivityServices.showToast("Can't load your profile", const Color(0xFFFF0000));
+      ActivityServices.showToast2("Can't load your profile", const Color(0xFFFF0000));
       return Container();
     }
     return Stack(

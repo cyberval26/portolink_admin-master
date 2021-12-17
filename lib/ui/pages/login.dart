@@ -6,6 +6,7 @@ class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
+
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
@@ -15,17 +16,20 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-        centerTitle: true,
-        elevation: 0,
-      ),
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
           children: [
+            Align(
+                alignment: const AlignmentDirectional(0, -0.8),
+                child: Image.asset(
+                  'assets/images/portolink.png',
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.fill,
+                )),
             Container(
               padding: const EdgeInsets.all(32),
               child: ListView(
@@ -35,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
                       child: Column(
                         children: [
                           const SizedBox(
-                            height: 24,
+                            height: 300,
                           ),
                           TextFormField(
                             controller: ctrlEmail,
@@ -86,37 +90,38 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           const SizedBox(height: 24),
                           ElevatedButton.icon(
-                            onPressed: () async {
-                              if (_formKey.currentState.validate()) {
-                                setState(() {
-                                  isLoading = true;
-                                });
-                                String msg = await AuthServices.signIn(
-                                    ctrlEmail.text, ctrlPassword.text);
-                                if (msg == "Success") {
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
                                   setState(() {
-                                    isLoading = false;
+                                    isLoading = true;
                                   });
-                                  ActivityServices.showToast(
-                                      "Login Success", Colors.grey[400]);
-                                  Navigator.pushReplacementNamed(
-                                      context, Home.routeName);
-                                } else {
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                  ActivityServices.showToast(msg, Colors.grey);
+                                  String msg = await AuthServices.signIn(
+                                      ctrlEmail.text, ctrlPassword.text);
+                                  if (msg == "Success") {
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    ActivityServices.showToast(
+                                        "Login Success", Colors.grey[400]);
+                                    Navigator.pushReplacementNamed(
+                                        context, Home.routeName);
+                                  } else {
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    ActivityServices.showToast(
+                                        msg, Colors.grey);
+                                  }
+                                  Fluttertoast.showToast(
+                                      msg: "Please check the fields!",
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white);
                                 }
-                                Fluttertoast.showToast(
-                                    msg: "Please check the fields!",
-                                    backgroundColor: Colors.red);
-                              }
-                            },
-                            icon: const Icon(Icons.login_rounded),
-                            label: const Text("Login"),
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.black, elevation: 4)
-                          ),
+                              },
+                              icon: const Icon(Icons.login_rounded),
+                              label: const Text("Login"),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.black, elevation: 4)),
                           const SizedBox(height: 24),
                           GestureDetector(
                             onTap: () {
@@ -125,10 +130,7 @@ class _LoginFormState extends State<LoginForm> {
                             },
                             child: const Text(
                               "Not registered yet? Join Now.",
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 16
-                              ),
+                              style: TextStyle(color: Colors.red, fontSize: 16),
                             ),
                           )
                         ],

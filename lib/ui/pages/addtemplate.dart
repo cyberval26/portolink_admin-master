@@ -231,7 +231,7 @@ class _AddTemplateState extends State<AddTemplate> {
                               });
                             } else {
                               //kosongkan aja
-                              ActivityServices.showToast(
+                              ActivityServices.showToast2(
                                   "Please check all the fields.", Colors.red);
                             }
                           },

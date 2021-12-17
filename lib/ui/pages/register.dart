@@ -6,6 +6,7 @@ class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
+
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   final ctrlName = TextEditingController();
@@ -16,17 +17,20 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Register"),
-        centerTitle: true,
-        elevation: 0,
-      ),
       resizeToAvoidBottomInset: false,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
           children: [
+            Align(
+                alignment: const AlignmentDirectional(0, -0.8),
+                child: Image.asset(
+                  'assets/images/portolink.png',
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.fill,
+                )),
             Container(
               padding: const EdgeInsets.all(32),
               child: ListView(
@@ -36,7 +40,7 @@ class _RegisterState extends State<Register> {
                       child: Column(
                         children: [
                           const SizedBox(
-                            height: 24,
+                            height: 300,
                           ),
                           TextFormField(
                             controller: ctrlName,
@@ -122,22 +126,20 @@ class _RegisterState extends State<Register> {
                                     isLoading = false;
                                   });
                                   ActivityServices.showToast(
-                                      "Register Success", Colors.green);
+                                      "Register Success", Colors.grey[400]);
                                   Navigator.pushReplacementNamed(
-                                    context, LoginForm.routeName);
+                                      context, LoginForm.routeName);
                                 } else {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                  ActivityServices.showToast(msg, Colors.red);
-                                  // Navigator.pushNamed(context, Login.routeName);
+                                  ActivityServices.showToast2(msg, Colors.red);
                                 }
-                                // });
                               } else {
-                                //kosongkan aja
                                 Fluttertoast.showToast(
                                     msg: "Please check the fields!",
-                                    backgroundColor: Colors.red);
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white);
                               }
                             },
                             icon: const Icon(Icons.save),
