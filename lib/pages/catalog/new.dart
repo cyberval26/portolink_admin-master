@@ -50,23 +50,30 @@ class _NewCatalogState extends State<NewCatalog> {
       'Description': textDescriptionController.text,
       'Price': textPriceController.text,
     }).then((value) {
-      // FirebaseStorage storage = FirebaseStorage.instance;
-      // Reference ref = storage.ref().child("catalog/" + value.id);
-      // UploadTask uploadTask = ref.putFile(recipePicture);
-      // uploadTask.then((res) {
-      //  print(res.ref.getDownloadURL());
-      //   Navigator.pop(context);
-      // });
+      FirebaseStorage storage = FirebaseStorage.instance;
+      for (var i = 0; i < catalogPicture.length; i++) {
+        if (catalogPicture[i] != null) {
+          Reference ref =
+              storage.ref().child("catalog/" + value.id + "/" + i.toString());
+          UploadTask uploadTask = ref.putFile(catalogPicture[i]!);
+          uploadTask.then((res) {
+            print(res.ref.getDownloadURL());
+            // Navigator.pop(context);
+          });
+        }
+      }
     }).catchError((error) => print("Failed to add catalog: $error"));
   }
 
   Widget getUploader(index) {
     if (catalogPicture[index] == null) {
-      return ElevatedButton(
-          onPressed: () {
-            pickImage(index);
-          },
-          child: Text('Upload image'));
+      return IconButton(
+        iconSize: 80,
+        onPressed: () {
+          pickImage(index);
+        },
+        icon: Icon(Icons.add_a_photo),
+      );
     } else {
       return Container(
         // child: Image(
