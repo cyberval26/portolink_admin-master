@@ -12,7 +12,7 @@ class _NewCatalogState extends State<NewCatalog> {
   final textDescriptionController = TextEditingController();
   final textPriceController = TextEditingController();
 
-  late File catalogPicture;
+  File? catalogPicture = null;
   // Admin currentUser = Admin();
 
   // @override
@@ -60,6 +60,31 @@ class _NewCatalogState extends State<NewCatalog> {
     }).catchError((error) => print("Failed to add catalog: $error"));
   }
 
+  Widget getUploader() {
+    if (catalogPicture == null) {
+      return ElevatedButton(
+          onPressed: () {
+            pickImage();
+          },
+          child: Text('Upload image'));
+    } else {
+      return Container(
+        // child: Image(
+        //   image: FileImage(catalogPicture!),
+        // ),
+        child: IconButton(
+          iconSize: 150,
+          onPressed: () {
+            pickImage();
+          },
+          icon: Image(
+            image: FileImage(catalogPicture!),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +95,7 @@ class _NewCatalogState extends State<NewCatalog> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  pickImage();
-                },
-                child: Text('Upload image')),
+            getUploader(),
             TextField(
               controller: textTemplateNameController,
               autocorrect: false,
