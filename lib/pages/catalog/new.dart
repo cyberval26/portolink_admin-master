@@ -12,7 +12,7 @@ class _NewCatalogState extends State<NewCatalog> {
   final textDescriptionController = TextEditingController();
   final textPriceController = TextEditingController();
 
-  File? catalogPicture = null;
+  List<File?> catalogPicture = [null, null, null, null, null];
   // Admin currentUser = Admin();
 
   // @override
@@ -33,11 +33,11 @@ class _NewCatalogState extends State<NewCatalog> {
   // }
   final picker = ImagePicker();
 
-  Future pickImage() async {
+  Future pickImage(index) async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
-      catalogPicture = File(pickedFile!.path);
+      catalogPicture[index] = File(pickedFile!.path);
     });
   }
 
@@ -60,11 +60,11 @@ class _NewCatalogState extends State<NewCatalog> {
     }).catchError((error) => print("Failed to add catalog: $error"));
   }
 
-  Widget getUploader() {
-    if (catalogPicture == null) {
+  Widget getUploader(index) {
+    if (catalogPicture[index] == null) {
       return ElevatedButton(
           onPressed: () {
-            pickImage();
+            pickImage(index);
           },
           child: Text('Upload image'));
     } else {
@@ -75,10 +75,10 @@ class _NewCatalogState extends State<NewCatalog> {
         child: IconButton(
           iconSize: 150,
           onPressed: () {
-            pickImage();
+            pickImage(index);
           },
           icon: Image(
-            image: FileImage(catalogPicture!),
+            image: FileImage(catalogPicture[index]!),
           ),
         ),
       );
@@ -95,7 +95,19 @@ class _NewCatalogState extends State<NewCatalog> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            getUploader(),
+            Container(
+              height: 100,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  getUploader(0),
+                  getUploader(1),
+                  getUploader(2),
+                  getUploader(3),
+                  getUploader(4),
+                ],
+              ),
+            ),
             TextField(
               controller: textTemplateNameController,
               autocorrect: false,
