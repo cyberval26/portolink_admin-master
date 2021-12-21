@@ -206,7 +206,7 @@ class _AddTemplateState extends State<AddTemplate> {
                               await TemplateServices.addTemplate(
                                 template, imageFile).then((value) {
                                   if (value == true) {
-                                    ActivityServices.showToastBlack("Add template successful!", Colors.grey[400]);
+                                    ActivityServices.showToastBlack("Add template successful!", Colors.grey[200]);
                                     clearForm();
                                     setState(() {
                                       isLoading = false;

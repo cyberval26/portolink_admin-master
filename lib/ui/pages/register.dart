@@ -1,27 +1,29 @@
 part of 'pages.dart';
 
 class Register extends StatefulWidget {
-  Register({Key key}) : super(key: key);
-
+  const Register({Key key}) : super(key: key);
+  static const String routeName = "/register";
   @override
   _RegisterState createState() => _RegisterState();
 }
-
 class _RegisterState extends State<Register> {
-  final textEmailController = TextEditingController();
-  final textPasswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final ctrlEmail = TextEditingController();
+  final ctrlPassword = TextEditingController();
+  bool isVisible = true;
+  bool isLoading = false;
 
   register() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-              email: textEmailController.text,
-              password: textPasswordController.text);
+              email: ctrlEmail.text,
+              password: ctrlPassword.text);
 
       userCredential.user.updateDisplayName("admin");
 
-      textEmailController.text = "";
-      textPasswordController.text = "";
+      ctrlEmail.text = "";
+      ctrlPassword.text = "";
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -43,12 +45,12 @@ class _RegisterState extends State<Register> {
       body: Column(
         children: [
           TextField(
-            controller: textEmailController,
+            controller: ctrlEmail,
             autocorrect: false,
             decoration: const InputDecoration(labelText: "Email"),
           ),
           TextField(
-            controller: textPasswordController,
+            controller: ctrlPassword,
             obscureText: true,
             decoration: const InputDecoration(labelText: "Password"),
           ),
