@@ -1,8 +1,7 @@
 part of '../pages.dart';
 
 class Catalog extends StatefulWidget {
-  Catalog({Key? key}) : super(key: key);
-
+  const Catalog({Key key}) : super(key: key);
   @override
   _CatalogState createState() => _CatalogState();
 }
@@ -16,7 +15,7 @@ class _CatalogState extends State<Catalog> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/catalog/new');
+          Navigator.pushNamed(context, '/CRUD/addtemplate');
         },
         child: Icon(Icons.add),
       ),

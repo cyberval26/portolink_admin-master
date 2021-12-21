@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
 class Profile extends StatefulWidget {
-  Profile({Key? key}) : super(key: key);
+  Profile({Key key}) : super(key: key);
 
   @override
   _ProfileState createState() => _ProfileState();

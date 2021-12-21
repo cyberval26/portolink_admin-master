@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
 class LoginForm extends StatefulWidget {
-  LoginForm({Key? key}) : super(key: key);
+  LoginForm({Key key}) : super(key: key);
 
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -17,9 +17,9 @@ class _LoginFormState extends State<LoginForm> {
           .signInWithEmailAndPassword(
               email: textEmailController.text,
               password: textPasswordController.text);
-      print("login success for " + FirebaseAuth.instance.currentUser!.email!);
+      print("login success for " + FirebaseAuth.instance.currentUser.email);
       //print(FirebaseAuth.instance.currentUser!.displayName!);
-      if (FirebaseAuth.instance.currentUser!.displayName == null) {
+      if (FirebaseAuth.instance.currentUser.displayName == null) {
         print('user is not an admin');
         FirebaseAuth.instance.signOut();
       }

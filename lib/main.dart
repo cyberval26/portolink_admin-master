@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'pages/pages.dart';
+import 'package:portolink/ui/pages/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +37,7 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             title: 'Portolink',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               colorScheme: ColorScheme(
                 primary: Colors.blue.shade200,
@@ -66,8 +67,7 @@ class _AppState extends State<App> {
               '/register': (context) => Register(),
               // '/profile': (context) => Profile(),
               // '/catalog': (context) => Catalog(),
-              '/catalog/new': (context) => NewCatalog(),
-              '/catalog/edit': (context) => Profile(),
+              '/CRUD/addtemplate': (context) => AddTemplate(),
               // '/requests': (context) => Requests(),
             },
           );
