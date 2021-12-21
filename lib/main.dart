@@ -1,25 +1,25 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:portolink/shared/shared.dart';
 import 'package:portolink/ui/pages/pages.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
-void main() {
+void enablePlatformOverrideForDesktop() {
+  if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  }
+}
+void main() async {
+  enablePlatformOverrideForDesktop();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
-
-class App extends StatefulWidget {
-  // Create the initialization Future outside of `build`:
+class MyApp extends StatelessWidget {
+  MyApp({Key key}) : super(key: key);
   @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  /// The future is part of the state of our widget. We should not call `initializeApp`
-  /// directly inside [build].
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
-  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       // Initialize FlutterFire:
@@ -41,7 +41,7 @@ class _AppState extends State<App> {
             theme: ThemeData(
               colorScheme: ColorScheme(
                 primary: Colors.blue.shade200,
-                onPrimary: Colors.black,
+                onPrimary: Colors.white,
                 primaryVariant: Colors.blue.shade200,
                 background: Colors.red,
                 onBackground: Colors.black,
@@ -62,18 +62,15 @@ class _AppState extends State<App> {
             ),
             initialRoute: '/',
             routes: {
-              '/': (context) => Home(),
-              // '/login': (context) => LoginForm(),
-              '/register': (context) => Register(),
-              // '/profile': (context) => Profile(),
-              // '/catalog': (context) => Catalog(),
-              '/CRUD/addtemplate': (context) => AddTemplate(),
-              // '/requests': (context) => Requests(),
+              '/': (context) => const LoginForm(),
+              Register.routeName: (context) => const Register(),
+              LoginForm.routeName: (context) => const LoginForm(),
+              Catalog.routeName: (context) => const Catalog(),
+              AddTemplate.routeName: (context) => const AddTemplate(),
+              Home.routeName: (context) => const Home()
             },
           );
         }
-
-        // Otherwise, show something whilst waiting for initialization to complete
         return const Text(
           "Loading ",
           textDirection: TextDirection.ltr,
