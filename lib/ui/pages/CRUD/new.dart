@@ -13,24 +13,24 @@
 //   final textPriceController = TextEditingController();
 
 //   List<File?> catalogPicture = [null, null, null, null, null];
-//   // Admin currentUser = Admin();
+//   Admin currentUser = Admin();
 
-//   // @override
-//   // void initState() {
-//   //   super.initState();
-//   //   FirebaseAuth.instance.authStateChanges().listen((event) {
-//   //     setState(() {
-//   //       var firebaseUser = FirebaseAuth.instance.currentUser;
-//   //       currentUser.loggedIn = firebaseUser != null;
-//   //       if (currentUser.loggedIn) {
-//   //         currentUser.email = firebaseUser!.email!;
-//   //         currentUser.uid = firebaseUser.uid;
-//   //         currentUser.verified = firebaseUser.emailVerified;
-//   //       }
-//   //       print(firebaseUser);
-//   //     });
-//   //   });
-//   // }
+//   @override
+//   void initState() {
+//     super.initState();
+//     FirebaseAuth.instance.authStateChanges().listen((event) {
+//       setState(() {
+//         var firebaseUser = FirebaseAuth.instance.currentUser;
+//         currentUser.loggedIn = firebaseUser != null;
+//         if (currentUser.loggedIn) {
+//           currentUser.email = firebaseUser!.email!;
+//           currentUser.uid = firebaseUser.uid;
+//           currentUser.verified = firebaseUser.emailVerified;
+//         }
+//         print(firebaseUser);
+//       });
+//     });
+//   }
 //   final picker = ImagePicker();
 
 //   Future pickImage(index) async {
