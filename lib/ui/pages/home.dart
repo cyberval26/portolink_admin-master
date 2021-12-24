@@ -14,6 +14,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    TemplateServices.getTemplates();
     FirebaseAuth.instance.authStateChanges().listen((event) {
       setState(() {
         var firebaseUser = FirebaseAuth.instance.currentUser;
