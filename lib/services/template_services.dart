@@ -49,10 +49,16 @@ class TemplateServices {
 
   static Future<List<Templates>> getTemplates() async {
     await Firebase.initializeApp();
+    List<Templates> templateList = [];
+    print('printing templates');
     await tCollection.get().then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
-        print(doc);
+        // print(doc['name']);
+        Templates newTemplates = Templates(
+            doc.id, doc['name'], doc['desc'], doc['price'], doc['photo']);
+        templateList.add(newTemplates);
       });
     });
+    return templateList;
   }
 }

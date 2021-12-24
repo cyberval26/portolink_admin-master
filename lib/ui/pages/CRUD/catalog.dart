@@ -9,6 +9,12 @@ class Catalog extends StatefulWidget {
 
 class _CatalogState extends State<Catalog> {
   @override
+  void initState() {
+    super.initState();
+    TemplateServices.getTemplates();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
