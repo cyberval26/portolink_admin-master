@@ -54,7 +54,6 @@ class _HomeState extends State<Home> {
   Widget getHome() {
     if (currentUser.loggedIn) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Portolink Admin")),
         body: getHomeContent(),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[

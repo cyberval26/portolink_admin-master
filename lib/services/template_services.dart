@@ -2,14 +2,12 @@ part of 'services.dart';
 
 class TemplateServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference tCollection =
-      FirebaseFirestore.instance.collection("Templates");
+  static CollectionReference tCollection = FirebaseFirestore.instance.collection("Templates");
   static DocumentReference tDoc;
   static Reference ref;
   static UploadTask uploadTask;
   static String imgUrl;
-  static Future<bool> addTemplate(
-      Templates templates, PickedFile imgFile) async {
+  static Future<bool> addTemplate(Templates templates, PickedFile imgFile) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     tDoc = await tCollection.add({
@@ -22,20 +20,15 @@ class TemplateServices {
       'updatedAt': dateNow
     });
     if (tDoc != null) {
-      ref = FirebaseStorage.instance
-          .ref()
-          .child("images")
-          .child(tDoc.id + ".jpg");
+      ref = FirebaseStorage.instance.ref().child("images").child(tDoc.id + ".jpg");
       uploadTask = ref.putFile(File(imgFile.path));
-      await uploadTask.whenComplete(
-          () => ref.getDownloadURL().then((value) => imgUrl = value));
+      await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
       tCollection.doc(tDoc.id).update({'tid': tDoc.id, 'photo': imgUrl});
       return true;
     } else {
       return false;
     }
   }
-
   static Future<bool> deleteTemplate(String id) async {
     bool result = true;
     await Firebase.initializeApp();
@@ -45,20 +38,5 @@ class TemplateServices {
       result = false;
     });
     return result;
-  }
-
-  static Future<List<Templates>> getTemplates() async {
-    await Firebase.initializeApp();
-    List<Templates> templateList = [];
-    print('printing templates');
-    await tCollection.get().then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        // print(doc['name']);
-        Templates newTemplates = Templates(
-            doc.id, doc['name'], doc['desc'], doc['price'], doc['photo']);
-        templateList.add(newTemplates);
-      });
-    });
-    return templateList;
   }
 }
