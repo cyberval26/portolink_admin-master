@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:portolink/shared/shared.dart';
 import 'package:portolink/ui/pages/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -17,11 +16,10 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   MyApp({Key key}) : super(key: key);
-  @override
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       // Initialize FlutterFire:
