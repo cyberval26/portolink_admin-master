@@ -88,13 +88,11 @@ class _HomeState extends State<Home> {
       );
     } else {
       return Scaffold(
-        appBar: AppBar(title: const Text("Portolink Admin")),
         body: Container(
             constraints: const BoxConstraints.expand(), child: LoginForm()),
       );
     }
-  }
-
+  } 
   @override
   Widget build(BuildContext context) {
     return getHome();

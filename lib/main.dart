@@ -9,7 +9,6 @@ void enablePlatformOverrideForDesktop() {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 }
-
 void main() async {
   enablePlatformOverrideForDesktop();
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
           return Text(
             "ERROR: ${snapshot.error.toString()} ",
             textDirection: TextDirection.ltr,
-          );
+          );  
         }
 
         // Once complete, show your application

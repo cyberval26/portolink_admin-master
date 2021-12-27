@@ -11,7 +11,7 @@ class _CatalogState extends State<Catalog> {
   CollectionReference productCollection = FirebaseFirestore.instance.collection("Templates");
   Widget buildBody() {
     return Container(
-      color: Colors.black12,
+      color: Colors.white,
       width: double.infinity,
       height: double.infinity,
       child: StreamBuilder<QuerySnapshot>(
@@ -45,9 +45,11 @@ class _CatalogState extends State<Catalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("List Templates"),
-        centerTitle: true
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/addtemplate');
+        },
+        child: const Icon(Icons.add),
       ),
       resizeToAvoidBottomInset: false,
       body: buildBody(),
