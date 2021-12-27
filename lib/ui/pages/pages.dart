@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:portolink/models/models.dart';
 import 'package:portolink/services/services.dart';
-import 'package:portolink/widgets/widgets.dart';
+import 'package:portolink/ui/widgets/widgets.dart';
 
 part 'home.dart';
 part 'login.dart';
