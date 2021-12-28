@@ -52,12 +52,11 @@ class MyApp extends StatelessWidget {
             ),
             initialRoute: '/',
             routes: {
-              '/': (context) => const LoginForm(),
-              Register.routeName: (context) => const Register(),
+              '/': (context) => const Splash(),
               LoginForm.routeName: (context) => const LoginForm(),
-              Catalog.routeName: (context) => const Catalog(),
-              AddTemplate.routeName: (context) => const AddTemplate(),
-              Home.routeName: (context) => const Home()
+              Register.routeName: (context) => const Register(),
+              Home.routeName: (context) => const Home(),
+              AddTemplate.routeName: (context) => const AddTemplate()
             },
           );
         }

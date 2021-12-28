@@ -2,7 +2,6 @@ part of '../pages.dart';
 
 class EditTemplate extends StatefulWidget {
   const EditTemplate({Key key}) : super(key: key);
-  static const String routeName = "/edittemplate";
   @override
   _EditTemplateState createState() => _EditTemplateState();
 }

@@ -2,7 +2,6 @@ part of '../pages.dart';
 
 class Catalog extends StatefulWidget {
   const Catalog({Key key}) : super(key: key);
-  static const String routeName = "/catalog";
   @override
   _CatalogState createState() => _CatalogState();
 }
@@ -26,7 +25,6 @@ class _CatalogState extends State<Catalog> {
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Templates templates;
-              // if (doc['tid'] == FirebaseAuth.instance.currentUser.uid) {
                 templates = Templates(
                   doc['tid'],
                   doc['name'],
@@ -34,9 +32,6 @@ class _CatalogState extends State<Catalog> {
                   doc['price'],
                   doc['photo']
                 );
-              // } else {
-              //   ActivityServices.showToastBlack("gagal ehe"+doc['name'], Colors.grey[200]);
-              // }
               return TemplateView(templates: templates);
             }).toList()
           );
