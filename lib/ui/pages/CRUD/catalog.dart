@@ -26,7 +26,8 @@ class _CatalogState extends State<Catalog> {
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Templates templates;
-              if (doc['tid'] == FirebaseAuth.instance.currentUser.uid) {
+              // if (doc['tid'] == FirebaseAuth.instance.currentUser.uid) {
+                ActivityServices.showToastWhite("gagal ehe"+doc['name'], Colors.red);
                 templates = Templates(
                   doc['tid'],
                   doc['name'],
@@ -34,7 +35,9 @@ class _CatalogState extends State<Catalog> {
                   doc['price'],
                   doc['photo']
                 );
-              }
+              // } else {
+              //   ActivityServices.showToastBlack("gagal ehe"+doc['name'], Colors.grey[200]);
+              // }
               return TemplateView(templates: templates);
             }).toList()
           );

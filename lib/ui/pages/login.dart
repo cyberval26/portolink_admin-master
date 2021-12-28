@@ -107,6 +107,9 @@ class _LoginFormState extends State<LoginForm> {
                                 ActivityServices.showToastBlack(
                                   "Login Success", Colors.grey[200]
                                 );
+                                Navigator.pushReplacementNamed(
+                                  context, Home.routeName
+                                );
                               } else {
                                 setState(() {
                                   isLoading = false;
@@ -115,11 +118,6 @@ class _LoginFormState extends State<LoginForm> {
                                   msg, Colors.grey[200]
                                 );
                               }
-                              Fluttertoast.showToast(
-                                msg: "Please check the fields!",
-                                backgroundColor: Colors.red,
-                                textColor: Colors.white
-                              );
                             }
                           },
                           icon: const Icon(Icons.login_rounded),

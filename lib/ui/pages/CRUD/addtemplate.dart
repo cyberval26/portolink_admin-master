@@ -166,8 +166,10 @@ class _AddTemplateState extends State<AddTemplate> {
                           ),
                           const SizedBox(width: 16),
                           Semantics(
-                            child: Image.file(File(imageFile.path),
-                            width: 100)
+                            child: Image.file(
+                              File(imageFile.path),
+                              width: 100
+                            )
                           )
                         ]),
                         const SizedBox(height: 40),
@@ -181,7 +183,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 "",
                                 ctrlName.text,
                                 ctrlDesc.text,
-                                ctrlPrice.text,
+                                ctrlPrice.text, 
                                 ""
                               );
                               await TemplateServices.addTemplate(
