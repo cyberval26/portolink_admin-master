@@ -9,22 +9,22 @@ class ActivityServices {
   }
   static void showToastBlack(String msg, Color mycolor) {
     Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: mycolor,
-        textColor: Colors.black,  
-        fontSize: 14
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: mycolor,
+      textColor: Colors.black,  
+      fontSize: 14
     );
   }
   static void showToastWhite(String msg, Color mycolor) {
     Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: mycolor,
-        textColor: Colors.white,
-        fontSize: 14
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: mycolor,
+      textColor: Colors.white,
+      fontSize: 14
     );
   }
   static Container loadings() {

@@ -15,9 +15,7 @@ class _AddTemplateState extends State<AddTemplate> {
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
   Future chooseFile(String type) async {
-    final selectedImage = await MultiImagePicker.pickImages(
-      maxImages: 20,
-    );
+    final selectedImage = await MultiImagePicker.pickImages(maxImages: 20);
     setState(() {
       imageFile = selectedImage as PickedFile;
     });
@@ -36,10 +34,8 @@ class _AddTemplateState extends State<AddTemplate> {
               },
               icon: const Icon(Icons.folder_outlined),
               label: const Text("Gallery"),
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-              ),
-            ),
+              style: ElevatedButton.styleFrom(elevation: 0)
+            )
           ]
         );
       }
@@ -148,11 +144,11 @@ class _AddTemplateState extends State<AddTemplate> {
                                 showFileDialog(context);
                               },
                               icon: const Icon(Icons.photo_camera),
-                              label: const Text("Take Photo"),
+                              label: const Text("Take Photo")
                             ),
                             const SizedBox(width: 16),
                             const Text("File not found.", style: TextStyle(color: Colors.red))
-                          ],
+                          ]
                         )
                         : Row(
                           children: <Widget>[
@@ -185,12 +181,11 @@ class _AddTemplateState extends State<AddTemplate> {
                               );
                               await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToastBlack(
-                                    "Add template successful!", Colors.green);
-                                    clearForm();
-                                    setState(() {
-                                      isLoading = false;
-                                    });
+                                  ActivityServices.showToastBlack("Add template successful!", Colors.green);
+                                  clearForm();
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 } else {
                                     ActivityServices.showToastWhite("Add template failed.", Colors.red);
                                 }

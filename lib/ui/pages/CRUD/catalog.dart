@@ -46,10 +46,10 @@ class _CatalogState extends State<Catalog> {
         onPressed: () {
           Navigator.pushNamed(context, '/addtemplate');
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add)
       ),
       resizeToAvoidBottomInset: false,
-      body: buildBody(),
+      body: buildBody()
     );
   }
 }

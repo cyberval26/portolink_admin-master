@@ -11,13 +11,13 @@ class Templates {
     this.name,
     this.desc,
     this.price,
-    this.photo,
+    this.photo
   );
   List<Object> get props => [
     tid,
     name,
     desc,
     price,
-    photo,
+    photo
   ];
 }

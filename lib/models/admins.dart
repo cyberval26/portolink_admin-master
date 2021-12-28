@@ -11,13 +11,13 @@ class Admins {
     this.email,
     this.pass,
     this.createdAt,
-    this.updatedAt,
+    this.updatedAt
   );
   List<Object> get props => [
     aid,
     email,
     pass,
     createdAt,
-    updatedAt,
+    updatedAt
   ];
 }
