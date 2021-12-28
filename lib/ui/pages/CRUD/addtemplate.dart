@@ -40,7 +40,7 @@ class _AddTemplateState extends State<AddTemplate> {
                 elevation: 0,
               ),
             ),
-          ],
+          ]
         );
       }
     );
@@ -67,7 +67,8 @@ class _AddTemplateState extends State<AddTemplate> {
         title: const Text('Add a New Template'),
         centerTitle: true
       ),
-      body: SizedBox(
+      body: Container(
+        color: Colors.white,
         width: double.infinity,
         height: double.infinity,
         child: Stack(
@@ -147,7 +148,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 showFileDialog(context);
                               },
                               icon: const Icon(Icons.photo_camera),
-                              label: const Text("Ambil Foto"),
+                              label: const Text("Take Photo"),
                             ),
                             const SizedBox(width: 16),
                             const Text("File not found.", style: TextStyle(color: Colors.red))
@@ -160,7 +161,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 showFileDialog(context);
                               },
                               icon: const Icon(Icons.photo_camera),
-                              label: const Text("Ulangi Foto")
+                              label: const Text("Retake")
                             ),
                             const SizedBox(width: 16),
                             Semantics(

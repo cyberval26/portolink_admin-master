@@ -11,7 +11,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-    color: Colors.black12,
+      color: Colors.white,
       width: double.infinity,
       height: double.infinity,
       child: StreamBuilder<QuerySnapshot>(
@@ -21,7 +21,7 @@ class _ProfileState extends State<Profile> {
             return const Text("Failed to load data!");
           }
           else if (snapshot.connectionState == ConnectionState.waiting) {
-              return ActivityServices.loadings();
+            return ActivityServices.loadings();
           }
           return Stack(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
@@ -38,7 +38,7 @@ class _ProfileState extends State<Profile> {
               return AccountView(admins: admins);
             }).toList()
           );
-        },  
+        }
       )
     );
   }
