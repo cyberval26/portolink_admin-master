@@ -81,7 +81,7 @@ class _AddTemplateState extends State<AddTemplate> {
         title: const Text('Add a New Template'),
         centerTitle: true
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
@@ -89,22 +89,20 @@ class _AddTemplateState extends State<AddTemplate> {
             ListView(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   child: Form(
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
-                        SizedBox(
-                          height: 40,
-                        ),
+                        const SizedBox( height: 40),
                         TextFormField(
                           controller: ctrlName,
                           keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
-                            labelText: "Product Name",
+                            labelText: "Template Name",
                             prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
@@ -113,20 +111,18 @@ class _AddTemplateState extends State<AddTemplate> {
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         TextFormField(
                           controller: ctrlDesc,
                           keyboardType: TextInputType.name,
                           maxLines: 3,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
-                            labelText: "Product Description",
+                            labelText: "Template Description",
                             prefixIcon: Icon(Icons.description),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
@@ -135,19 +131,17 @@ class _AddTemplateState extends State<AddTemplate> {
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         TextFormField(
                           controller: ctrlPrice,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
-                            labelText: "Product Price",
+                            labelText: "Template Price",
                             prefixIcon: Icon(Icons.money),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
@@ -156,54 +150,42 @@ class _AddTemplateState extends State<AddTemplate> {
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         imageFile == null
-                            ? Row(
-                                children: <Widget>[
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      showFileDialog(context);
-                                    },
-                                    icon: Icon(Icons.photo_camera),
-                                    label: Text("Ambil Foto"),
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Text("File not found.", style: TextStyle(color: Colors.red))
-                                ],
-                              )
-                            : Row(
-                                children: <Widget>[
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      showFileDialog(context);
-                                    },
-                                    icon: Icon(Icons.photo_camera),
-                                    label: Text("Ulangi Foto"),
-                                  ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Semantics(
-                                    child: Image.file(
-                                      File(imageFile.path),
-                                      width: 100,
-                                    ),
-                                  )
-                                ],
-                              ),
-                        SizedBox(
-                          height: 40,
+                        ? Row(
+                          children: <Widget>[
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                showFileDialog(context);
+                              },
+                              icon: const Icon(Icons.photo_camera),
+                              label: const Text("Ambil Foto"),
+                            ),
+                            const SizedBox(width: 16),
+                            const Text("File not found.", style: TextStyle(color: Colors.red))
+                          ],
+                        )
+                        : Row(
+                          children: <Widget>[
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                showFileDialog(context);
+                              },
+                              icon: const Icon(Icons.photo_camera),
+                              label: const Text("Ulangi Foto")
+                            ),
+                            const SizedBox(width: 16),
+                            Semantics(
+                              child: Image.file(File(imageFile.path), width: 100)
+                            )
+                          ]
                         ),
+                        const SizedBox(height: 40),
                         ElevatedButton.icon(
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              //melanjutkan ke tahap berikutnya
                               setState(() {
                                 isLoading = true;
                               });
@@ -212,44 +194,40 @@ class _AddTemplateState extends State<AddTemplate> {
                                 ctrlName.text,
                                 ctrlDesc.text,
                                 ctrlPrice.text,
-                                "",
+                                ""
                               );
-                              await TemplateServices.addTemplate(
-                                      templates, imageFile)
-                                  .then((value) {
+                              await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
                                   ActivityServices.showToastBlack(
-                                      "Add product successful!", Colors.green);
-                                  clearForm();
-                                  setState(() {
-                                    isLoading = false;
-                                  });
+                                    "Add template successful!", Colors.green);
+                                    clearForm();
+                                    setState(() {
+                                      isLoading = false;
+                                    });
                                 } else {
-                                  ActivityServices.showToastWhite(
-                                      "Add product failed.", Colors.red);
+                                    ActivityServices.showToastWhite("Add template failed.", Colors.red);
                                 }
                               });
                             } else {
-                              //kosongkan aja
-                              ActivityServices.showToastWhite(
-                                  "Please check all the fields.", Colors.red);
+                              ActivityServices.showToastWhite("Please check all the fields.", Colors.red);
                             }
                           },
-                          icon: Icon(Icons.save),
-                          label: Text("Save Product"),
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.green, elevation: 4),
-                        ),
-                      ],
-                    ),
-                  ),
+                          icon: const Icon(Icons.save),
+                          label: const Text("Save Template"),
+                          style: ElevatedButton.styleFrom(primary: Colors.green, elevation: 4)
+                        )
+                      ]
+                    )
+                  )
                 )
-              ],
+              ]
             ),
-            isLoading == true ? ActivityServices.loadings() : Container()
-          ],
-        ),
-      ),
+            isLoading == true
+            ? ActivityServices.loadings()
+            : Container()
+          ]
+        )
+      )
     );
   }
 }
