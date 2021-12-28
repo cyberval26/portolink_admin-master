@@ -32,18 +32,13 @@ class _AddTemplateState extends State<AddTemplate> {
       context: ctx,
       builder: (ctx) {
         return AlertDialog(
-          title: const Text("Confirmation"),
-          content: const Text("Pick image from:"),
           actions: [
             ElevatedButton.icon(
               onPressed: () {
                 chooseFile("gallery");
               },
               icon: const Icon(Icons.folder_outlined),
-              label: const Text("Gallery"),
-              style: ElevatedButton.styleFrom(
-                elevation: 0
-              )
+              label: const Text("Gallery")
             )
           ]
         );
@@ -187,7 +182,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 ctrlName.text,
                                 ctrlDesc.text,
                                 ctrlPrice.text,
-                                 ""
+                                ""
                               );
                               await TemplateServices.addTemplate(
                                 template, imageFile

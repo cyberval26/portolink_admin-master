@@ -21,18 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Initialize FlutterFire:
       future: _initialization,
       builder: (context, snapshot) {
-        // Check for errors
         if (snapshot.hasError) {
           return Text(
             "ERROR: ${snapshot.error.toString()} ",
             textDirection: TextDirection.ltr,
           );  
         }
-
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             title: 'Portolink',
@@ -53,11 +49,6 @@ class MyApp extends StatelessWidget {
                 onSurface: Colors.black,
                 brightness: Brightness.light,
               ),
-              // elevatedButtonTheme: ElevatedButtonThemeData(
-              //   style: TextButton.styleFrom(
-              //       backgroundColor: Colors.teal.shade200,
-              //       textStyle: const TextStyle(color: Colors.white)),
-              // ),
             ),
             initialRoute: '/',
             routes: {

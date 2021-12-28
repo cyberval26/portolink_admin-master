@@ -1,19 +1,45 @@
 part of 'pages.dart';
 
 class Profile extends StatefulWidget {
-  Profile({Key key}) : super(key: key);
-
+  const Profile({Key key}) : super(key: key);
   @override
   _ProfileState createState() => _ProfileState();
 }
-
 class _ProfileState extends State<Profile> {
-  logout() {
-    FirebaseAuth.instance.signOut();
-  }
-
+  bool isLoading = false;
+  CollectionReference admCollection = FirebaseFirestore.instance.collection("Admins");
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: logout, child: Text("Logout"));
+    return Container(
+    color: Colors.black12,
+      width: double.infinity,
+      height: double.infinity,
+      child: StreamBuilder<QuerySnapshot>(
+        stream: admCollection.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text("Failed to load data!");
+          }
+          else if (snapshot.connectionState == ConnectionState.waiting) {
+              return ActivityServices.loadings();
+          }
+          return Stack(
+            children: snapshot.data.docs.map((DocumentSnapshot doc) {
+              Admins admins;
+              if (doc['aid'] == FirebaseAuth.instance.currentUser.uid) {
+                admins = Admins(
+                  doc['aid'],
+                  doc['email'],
+                  doc['pass'],
+                  doc['createdAt'],
+                  doc['updatedAt']
+                );
+              }
+              return AccountView(admins: admins);
+            }).toList()
+          );
+        },  
+      )
+    );
   }
 }
