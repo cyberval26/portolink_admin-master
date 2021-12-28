@@ -103,9 +103,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastBlack(
-                                  "Register Success", Colors.grey[200]
-                                );
+                                ActivityServices.showToastWhite("Register Success");
                                 Navigator.pushReplacementNamed(
                                   context, LoginForm.routeName
                                 );
@@ -113,7 +111,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastWhite(msg, Colors.red);
+                                ActivityServices.showToastBlack(msg);
                               }
                             } else {
                               Fluttertoast.showToast(

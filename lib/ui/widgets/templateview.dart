@@ -11,6 +11,7 @@ class _TemplateViewState extends State<TemplateView> {
   Widget build(BuildContext context) {
     Templates templates = widget.templates;
     return Card(
+      color:  Colors.blue[100],
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       margin: const EdgeInsets.all(8),
@@ -70,17 +71,12 @@ class _TemplateViewState extends State<TemplateView> {
                                   onPressed: () async {
                                     bool result = await TemplateServices.deleteTemplate(templates.tid);
                                     if (result) {
-                                      ActivityServices.showToastBlack(
-                                        "Delete Success",
-                                        Colors.green
-                                      );
+                                      ActivityServices.showToastWhite("Delete Success");
                                     } else {
-                                      ActivityServices.showToastWhite("Delete Failed", Colors.red);
+                                      ActivityServices.showToastBlack("Delete Failed");
                                     }
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.red
-                                  )
+                                  style: ElevatedButton.styleFrom(primary: Colors.red)
                                 )
                               ]
                             )

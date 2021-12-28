@@ -20,7 +20,7 @@ class _SplashState extends State<Splash> {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
       Navigator.pushReplacementNamed(context, Home.routeName);
-      ActivityServices.showToastBlack("Welcome Back " + auth.currentUser.email, Colors.grey[200]);
+      ActivityServices.showToastWhite("Welcome Back " + auth.currentUser.email);
     } else {
       Navigator.pushReplacementNamed(context, LoginForm.routeName);
     }

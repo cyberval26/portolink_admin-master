@@ -84,13 +84,13 @@ class _AddTemplateState extends State<AddTemplate> {
                           decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
                             labelText: "Template Name",
-                            prefixIcon: Icon(Icons.person),
+                            prefixIcon: Icon(Icons.bookmark),
                             border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
@@ -110,7 +110,7 @@ class _AddTemplateState extends State<AddTemplate> {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
@@ -123,13 +123,13 @@ class _AddTemplateState extends State<AddTemplate> {
                           decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
                             labelText: "Template Price",
-                            prefixIcon: Icon(Icons.money),
+                            prefixIcon: Icon(Icons.attach_money),
                             border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
@@ -143,8 +143,8 @@ class _AddTemplateState extends State<AddTemplate> {
                               onPressed: () {
                                 showFileDialog(context);
                               },
-                              icon: const Icon(Icons.photo_camera),
-                              label: const Text("Take Photo")
+                              icon: const Icon(Icons.image),
+                              label: const Text("Pick Image")
                             ),
                             const SizedBox(width: 16),
                             const Text("File not found.", style: TextStyle(color: Colors.red))
@@ -156,8 +156,8 @@ class _AddTemplateState extends State<AddTemplate> {
                               onPressed: () {
                                 showFileDialog(context);
                               },
-                              icon: const Icon(Icons.photo_camera),
-                              label: const Text("Retake")
+                              icon: const Icon(Icons.image),
+                              label: const Text("Repicl")
                             ),
                             const SizedBox(width: 16),
                             Semantics(
@@ -181,21 +181,21 @@ class _AddTemplateState extends State<AddTemplate> {
                               );
                               await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToastBlack("Add template successful!", Colors.green);
+                                  ActivityServices.showToastBlack("Add template successfull!");
                                   clearForm();
                                   setState(() {
                                     isLoading = false;
                                   });
                                 } else {
-                                    ActivityServices.showToastWhite("Add template failed.", Colors.red);
+                                    ActivityServices.showToastWhite("Add template failed.");
                                 }
                               });
                             } else {
-                              ActivityServices.showToastWhite("Please check all the fields.", Colors.red);
+                              ActivityServices.showToastWhite("Please check all  the fields.");
                             }
                           },
-                          icon: const Icon(Icons.save),
-                          label: const Text("Save Template"),
+                          icon: const Icon(Icons.upload),
+                          label: const Text("Upload Template"),
                           style: ElevatedButton.styleFrom(primary: Colors.green, elevation: 4)
                         )
                       ]

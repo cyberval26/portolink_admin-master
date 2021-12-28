@@ -104,34 +104,28 @@ class _LoginFormState extends State<LoginForm> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastBlack(
-                                  "Login Success", Colors.grey[200]
-                                );
-                                Navigator.pushReplacementNamed(
-                                  context, Home.routeName
-                                );
+                                ActivityServices.showToastWhite("Login Success");
+                                Navigator.pushReplacementNamed(context, Home.routeName);
                               } else {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastBlack(
-                                  msg, Colors.grey[200]
-                                );
+                                ActivityServices.showToastBlack(msg);
                               }
                             }
                           },
                           icon: const Icon(Icons.login_rounded),
                           label: const Text("Login"),
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.black, elevation: 4
+                            primary: Colors.black,
+                            elevation: 4
                           )
                         ),
                         const SizedBox(height: 24),
                         GestureDetector(
                           onTap: () {
                             Navigator.pushReplacementNamed(
-                              context, Register.routeName
-                            );
+                              context, Register.routeName);
                           },
                           child: const Text(
                             "Not registered yet? Join Now.",

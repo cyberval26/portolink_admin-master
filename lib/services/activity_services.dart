@@ -7,22 +7,18 @@ class ActivityServices {
     String result = formatter.format(now);
     return result;
   }
-  static void showToastBlack(String msg, Color mycolor) {
+  static void showToastBlack(String msg) {
     Fluttertoast.showToast(
       msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: mycolor,
+      backgroundColor: Colors.red,
       textColor: Colors.black,  
       fontSize: 14
     );
   }
-  static void showToastWhite(String msg, Color mycolor) {
+  static void showToastWhite(String msg) {
     Fluttertoast.showToast(
       msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: mycolor,
+      backgroundColor: Colors.grey[200],
       textColor: Colors.white,
       fontSize: 14
     );
