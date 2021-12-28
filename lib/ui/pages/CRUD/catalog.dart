@@ -27,7 +27,6 @@ class _CatalogState extends State<Catalog> {
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Templates templates;
               // if (doc['tid'] == FirebaseAuth.instance.currentUser.uid) {
-                ActivityServices.showToastWhite("gagal ehe"+doc['name'], Colors.red);
                 templates = Templates(
                   doc['tid'],
                   doc['name'],

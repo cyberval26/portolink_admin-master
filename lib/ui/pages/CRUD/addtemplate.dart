@@ -16,12 +16,14 @@ class _AddTemplateState extends State<AddTemplate> {
   final ImagePicker imagePicker = ImagePicker();
   Future chooseFile(String type) async {
     ImageSource imgSrc;
-    if (type == "gallery") {
+    if (type == "camera") {
+      imgSrc = ImageSource.camera;
+    } else if (type == "gallery") {
       imgSrc = ImageSource.gallery;
     }
     final selectedImage = await imagePicker.pickImage(
       source: imgSrc,
-      imageQuality: 100
+      imageQuality: 50,
     );
     setState(() {
       imageFile = selectedImage as PickedFile;
@@ -32,15 +34,27 @@ class _AddTemplateState extends State<AddTemplate> {
       context: ctx,
       builder: (ctx) {
         return AlertDialog(
+          title: const Text("Confirmation"),
+          content: const Text("Pick image from:"),
           actions: [
+            ElevatedButton.icon(
+              onPressed: () {
+                chooseFile("camera");
+              },
+              icon: const Icon(Icons.camera_alt),
+              label: const Text("Camera"),
+            ),
             ElevatedButton.icon(
               onPressed: () {
                 chooseFile("gallery");
               },
               icon: const Icon(Icons.folder_outlined),
-              label: const Text("Gallery")
-            )
-          ]
+              label: const Text("Gallery"),
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+              ),
+            ),
+          ],
         );
       }
     );
@@ -166,10 +180,8 @@ class _AddTemplateState extends State<AddTemplate> {
                           ),
                           const SizedBox(width: 16),
                           Semantics(
-                            child: Image.file(
-                              File(imageFile.path),
-                              width: 100
-                            )
+                            child: Image.file(File(imageFile.path),
+                            width: 100)
                           )
                         ]),
                         const SizedBox(height: 40),
@@ -183,7 +195,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 "",
                                 ctrlName.text,
                                 ctrlDesc.text,
-                                ctrlPrice.text, 
+                                ctrlPrice.text,
                                 ""
                               );
                               await TemplateServices.addTemplate(

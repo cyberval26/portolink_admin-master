@@ -10,7 +10,7 @@ import 'package:portolink/models/models.dart';
 import 'package:portolink/services/services.dart';
 import 'package:portolink/ui/widgets/widgets.dart';
 
-part 'home2.dart';
+part 'home.dart';
 part 'login.dart';
 part 'register.dart';
 part 'profile.dart';
