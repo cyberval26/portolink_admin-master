@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
     _loadSplash();
   }
   _loadSplash() async {
-    var _duration = const Duration(seconds: 1);
+    var _duration = const Duration(seconds: 2);
     return Timer(_duration, checkAuth);
   }
   void checkAuth() async {

@@ -15,15 +15,8 @@ class _AddTemplateState extends State<AddTemplate> {
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
   Future chooseFile(String type) async {
-    ImageSource imgSrc;
-    if (type == "camera") {
-      imgSrc = ImageSource.camera;
-    } else if (type == "gallery") {
-      imgSrc = ImageSource.gallery;
-    }
-    final selectedImage = await imagePicker.pickImage(
-      source: imgSrc,
-      imageQuality: 100,
+    final selectedImage = await MultiImagePicker.pickImages(
+      maxImages: 20,
     );
     setState(() {
       imageFile = selectedImage as PickedFile;
@@ -37,13 +30,6 @@ class _AddTemplateState extends State<AddTemplate> {
           title: const Text("Confirmation"),
           content: const Text("Pick image from:"),
           actions: [
-            ElevatedButton.icon(
-              onPressed: () {
-                chooseFile("camera");
-              },
-              icon: const Icon(Icons.camera_alt),
-              label: const Text("Camera"),
-            ),
             ElevatedButton.icon(
               onPressed: () {
                 chooseFile("gallery");
