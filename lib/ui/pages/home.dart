@@ -6,6 +6,7 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
 class _HomeState extends State<Home> {
   int _selectedIntex = 0;
   final List<Widget> _widgetOptions = <Widget>[
@@ -18,35 +19,22 @@ class _HomeState extends State<Home> {
       _selectedIntex = index;
     });
   }
+
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIntex)
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Catalog'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.checklist),
-            label: 'Requests'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.face),
-            label: 'Profile'
-          ),
-        ],
-        currentIndex: _selectedIntex,
-        onTap: _onItemTapped,
-        elevation: 0
-      ),
+      body: Center(child: _widgetOptions.elementAt(_selectedIntex)),
+      bottomNavigationBar:
+          BottomNavigationBar(items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
+        BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
+        BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Profiles'),
+      ], currentIndex: _selectedIntex, onTap: _onItemTapped, elevation: 0),
     );
   }
 }
