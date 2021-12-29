@@ -61,6 +61,8 @@ class _TemplateViewState extends State<TemplateView> {
                                   )
                                 ),
                                 const SizedBox(height: 48),
+                                Image.network(templates.photo),
+                                const SizedBox(height: 48),
                                 Text("Description : " + templates.desc),
                                 const SizedBox(height: 24),
                                 Text("Price: " + templates.price),

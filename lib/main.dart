@@ -23,25 +23,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // title: 'Portolink',
-      // debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme(
-      //     primary: Colors.blue.shade200,
-      //     onPrimary: Colors.white,
-      //     primaryVariant: Colors.blue.shade200,
-      //     background: Colors.red,
-      //     onBackground: Colors.black,
-      //     secondary: Colors.red,
-      //     onSecondary: Colors.white,
-      //     secondaryVariant: Colors.deepOrange,
-      //     error: Colors.black,
-      //     onError: Colors.white,
-      //     surface: Colors.white,
-      //     onSurface: Colors.black,
-      //     brightness: Brightness.light,
-      //   ),
-      // ),
       debugShowCheckedModeBanner: false,
       theme: MyTheme.lightTheme(),
       initialRoute: '/',

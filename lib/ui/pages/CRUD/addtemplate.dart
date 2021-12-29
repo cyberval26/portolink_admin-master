@@ -14,10 +14,14 @@ class _AddTemplateState extends State<AddTemplate> {
   bool isLoading = false;
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
-  Future chooseFile(String type) async {
-    final selectedImage = await MultiImagePicker.pickImages(maxImages: 20);
+  Future chooseFile(String type) async{
+    ImageSource imgSrc = ImageSource.gallery;
+    final selectedImage = await imagePicker.getImage(
+      source: imgSrc,
+      imageQuality: 100
+    );
     setState(() {
-      imageFile = selectedImage as PickedFile;
+      imageFile = selectedImage;
     });
   }
   void showFileDialog(BuildContext ctx) {
@@ -157,7 +161,7 @@ class _AddTemplateState extends State<AddTemplate> {
                                 showFileDialog(context);
                               },
                               icon: const Icon(Icons.image),
-                              label: const Text("Repicl")
+                              label: const Text("Repick")
                             ),
                             const SizedBox(width: 16),
                             Semantics(
@@ -181,7 +185,7 @@ class _AddTemplateState extends State<AddTemplate> {
                               );
                               await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToastBlack("Add template successfull!");
+                                  ActivityServices.showToastBlack("Add template successful!");
                                   clearForm();
                                   setState(() {
                                     isLoading = false;
