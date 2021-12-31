@@ -11,6 +11,7 @@ void enablePlatformOverrideForDesktop() {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 }
+
 void main() async {
   enablePlatformOverrideForDesktop();
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
   @override
@@ -31,7 +33,8 @@ class MyApp extends StatelessWidget {
         LoginForm.routeName: (context) => const LoginForm(),
         Register.routeName: (context) => const Register(),
         Home.routeName: (context) => const Home(),
-        AddTemplate.routeName: (context) => const AddTemplate()
+        AddTemplate.routeName: (context) => const AddTemplate(),
+        EditTemplate.routeName: (context) => const EditTemplate(),
       },
     );
   }

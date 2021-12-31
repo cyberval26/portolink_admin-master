@@ -10,7 +10,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:portolink/ui/pages/pages.dart';
 
 part 'activity_services.dart';
-part 'auth_services.dart';  
+part 'auth_services.dart';
 part 'template_services.dart';
