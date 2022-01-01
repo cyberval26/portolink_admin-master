@@ -20,8 +20,15 @@ class _EditTemplateState extends State<EditTemplate> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
+    // print('halo1');
+    Future.delayed(Duration.zero, () async {
       print(args);
+      //  print('halo2');
+      Templates currentTemplates =
+          await TemplateServices.getSingleTemplate(args);
+      ctrlName.text = currentTemplates.name;
+      ctrlDesc.text = currentTemplates.desc;
+      ctrlPrice.text = currentTemplates.price;
     });
   }
 

@@ -10,7 +10,22 @@ class TemplateServices {
   static String imgUrl;
 
   static Future<Templates> getSingleTemplate(String id) async {
-    await tCollection.doc(id).get();
+    Templates templates;
+    var tData = await tCollection.doc(id).get();
+    var data = tData.data() as Map;
+
+    // await tCollection
+    //     .doc(id)
+    //     .get()
+    //     .then((DocumentSnapshot documentSnapshot) async {
+    //   //  print(documentSnapshot.data()['name']);
+    //   var data = documentSnapshot.data() as Map;
+    //   // print(data['name']);
+    templates =
+        Templates(id, data["name"], data["desc"], data["price"], data["photo"]);
+    // print(templates);
+    return templates;
+    // };
   }
 
   static Future<bool> addTemplate(
