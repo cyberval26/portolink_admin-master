@@ -194,14 +194,14 @@ class _EditTemplateState extends State<EditTemplate> {
                                       .then((value) {
                                     if (value == true) {
                                       ActivityServices.showToastBlack(
-                                          "Add template successful!");
+                                          "Update template successful!");
                                       clearForm();
                                       setState(() {
                                         isLoading = false;
                                       });
                                     } else {
                                       ActivityServices.showToastWhite(
-                                          "Add template failed.");
+                                          "Update template failed.");
                                     }
                                   });
                                 } else {

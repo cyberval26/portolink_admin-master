@@ -8,6 +8,14 @@ class TemplateView extends StatefulWidget {
 }
 
 class _TemplateViewState extends State<TemplateView> {
+  // void delete() {
+  //   CollectionReference Templates =
+  //       FirebaseFirestore.instance.collection('templates');
+  //   TemplateServices.tDoc.delete().then((value) {
+  //     Navigator.pop(context);
+  //   }).catchError((error) => print("Failed to Delete: $error"));
+  // }
+
   @override
   Widget build(BuildContext context) {
     Templates templates = widget.templates;
