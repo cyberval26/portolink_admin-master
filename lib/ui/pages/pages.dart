@@ -20,3 +20,4 @@ part 'requests.dart';
 part 'models.dart';
 part 'CRUD/addtemplate.dart';
 part 'CRUD/edittemplate.dart';
+part 'CRUD/request.dart';
