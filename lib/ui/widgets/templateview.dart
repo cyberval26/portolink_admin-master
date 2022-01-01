@@ -60,7 +60,7 @@ class _TemplateViewState extends State<TemplateView> {
                                               const SizedBox(height: 24),
                                               ElevatedButton.icon(
                                                 icon: const Icon(
-                                                    CupertinoIcons.trash_fill),
+                                                    CupertinoIcons.pencil),
                                                 label:
                                                     const Text("Update Data"),
                                                 onPressed: () {
