@@ -14,7 +14,7 @@ class _AddTemplateState extends State<AddTemplate> {
   bool isLoading = false;
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
-  Future chooseFile(String type) async{
+  Future chooseFile(String type) async {
     ImageSource imgSrc = ImageSource.gallery;
     final selectedImage = await imagePicker.getImage(
       source: imgSrc,
@@ -164,9 +164,7 @@ class _AddTemplateState extends State<AddTemplate> {
                               label: const Text("Repick")
                             ),
                             const SizedBox(width: 16),
-                            Semantics(
-                              child: Image.file(File(imageFile.path), width: 100)
-                            )
+                            Semantics(child: Image.file(File(imageFile.path), width: 100))
                           ]
                         ),
                         const SizedBox(height: 40),

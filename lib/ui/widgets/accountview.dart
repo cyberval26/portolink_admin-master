@@ -12,7 +12,6 @@ class _AccountViewState extends State<AccountView> {
   Widget build(BuildContext context) {
     Admins admins = widget.admins;
     if (admins == null) {
-      ActivityServices.showToastBlack("Can't load your profile");
       return Container();
     }
     return Stack(
