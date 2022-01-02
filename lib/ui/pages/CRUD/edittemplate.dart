@@ -26,14 +26,6 @@ class _EditTemplateState extends State<EditTemplate> {
     ctrlDesc.text = widget.desc;
     ctrlPrice.text = widget.price;
     super.initState();
-    // Future.delayed(Duration.zero, () async {
-    //   print(args);
-    //   Templates currentTemplates = await TemplateServices.getSingleTemplate(args);
-    //   ctrlName.text = currentTemplates.name;
-    //   ctrlDesc.text = currentTemplates.desc;
-    //   ctrlPrice.text = currentTemplates.price;
-    //   ctrlPhoto.text = currentTemplates.photo;
-    // });
   }
   Future chooseFile(String type) async {
     ImageSource imgSrc = ImageSource.gallery;

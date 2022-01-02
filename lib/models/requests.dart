@@ -1,29 +1,32 @@
 part of 'models.dart';
 
 class Requests {
-  final String oid;
-  final String name;
+  final String orderId;
+  final String templateName;
   final String color;
   final String contact;
   final String requestDescription;
   final String photoReference;
+  final String addBy;
   final String createdAt;
   const Requests(
-    this.oid,
-    this.name,
+    this.orderId,
+    this.templateName,
     this.color,
     this.contact,
     this.requestDescription,
     this.photoReference,
-    this.createdAt,
+    this.addBy,
+    this.createdAt
   );
   List<Object> get props => [
-    oid,
-    name,
+    orderId,
+    templateName,
     color,
     contact,
     requestDescription,
     photoReference,
-    createdAt,
+    addBy,
+    createdAt
   ];
 }

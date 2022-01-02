@@ -10,7 +10,7 @@ class _HomeState extends State<Home> {
   int _selectedIntex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const Catalog(),
-    const Requests(),
+    const Request(),
     const Profile()
   ];
   void _onItemTapped(int index) {
