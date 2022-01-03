@@ -1,13 +1,12 @@
 part of 'widgets.dart';
 
-class RequestView extends StatefulWidget {
-  const RequestView({Key key, this.requests}) : super(key: key);
+class ApprovedView extends StatefulWidget {
+  const ApprovedView({Key key, this.requests}) : super(key: key);
   final Requests requests;
-
   @override
-  _RequestViewState createState() => _RequestViewState();
+  _ApprovedViewState createState() => _ApprovedViewState();
 }
-class _RequestViewState extends State<RequestView> {
+class _ApprovedViewState extends State<ApprovedView> {
   @override
   Widget build(BuildContext context) {
     Requests requests = widget.requests;

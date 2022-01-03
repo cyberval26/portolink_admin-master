@@ -7,3 +7,4 @@ import 'package:portolink/ui/pages/pages.dart';
 part 'templateview.dart';
 part 'accountview.dart';
 part 'requestview.dart';
+part 'approvedview.dart';

@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class Request extends StatefulWidget {
-  const Request({Key key}) : super(key: key);
+class Approved extends StatefulWidget {
+  const Approved({Key key}) : super(key: key);
   @override
-  _RequestState createState() => _RequestState();
+  _ApprovedState createState() => _ApprovedState();
 }
-class _RequestState extends State<Request> {
+class _ApprovedState extends State<Approved> {
   String uid = FirebaseAuth.instance.currentUser.uid;
   CollectionReference templateCollection = FirebaseFirestore.instance.collection("order");
   Widget buildBody() {
@@ -24,8 +24,9 @@ class _RequestState extends State<Request> {
           }
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
-              Requests requests;
-             // if(doc['status'] != "finished") {
+                //ActivityServices.showToastWhite("gagal ehe" + doc['contact']);
+                Requests requests;
+                if(doc['status'] == "finished") {
                 requests = Requests(
                     doc['orderId'],
                     doc['templateName'],
@@ -38,10 +39,10 @@ class _RequestState extends State<Request> {
                     doc['status'],
                     doc['createdAt']
                 );
-             // }else{
-
-             // }
-              return RequestView(requests: requests);
+              }else{
+                requests = null;
+              }
+              return ApprovedView(requests: requests);
             }).toList()
           );
         }

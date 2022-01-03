@@ -19,3 +19,4 @@ part 'CRUD/catalog.dart';
 part 'request.dart';
 part 'CRUD/addtemplate.dart';
 part 'CRUD/edittemplate.dart';
+part'approved.dart';

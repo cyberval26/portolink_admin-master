@@ -8,9 +8,12 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Admins");
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
   final ctrlPassword = TextEditingController();
+  String check = "no";
+  String msg;
   bool isVisible = true;
   bool isLoading = false;
   @override
@@ -96,10 +99,10 @@ class _LoginFormState extends State<LoginForm> {
                               setState(() {
                                 isLoading = true;
                               });
-                              String msg = await AuthServices.signIn(
-                                ctrlEmail.text,
-                                ctrlPassword.text
-                              );
+                                msg = await AuthServices.signIn(
+                                    ctrlEmail.text,
+                                    ctrlPassword.text
+                                );
                               if (msg == "Success") {
                                 setState(() {
                                   isLoading = false;

@@ -2,7 +2,7 @@ part of 'services.dart';
 
 class TemplateServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference tCollection = FirebaseFirestore.instance.collection("Templates");
+  static CollectionReference tCollection = FirebaseFirestore.instance.collection("template");
   static DocumentReference tDoc;
   static Reference ref;
   static UploadTask uploadTask;
@@ -18,11 +18,11 @@ class TemplateServices {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     tDoc = await tCollection.add({
-      'tid': templates.tid,
-      'name': templates.name,
-      'desc': templates.desc,
+      'templateId': templates.tid,
+      'templateName': templates.name,
+      'description': templates.desc,
       'price': templates.price,
-      'photo': templates.photo,
+      'photoFile': templates.photo,
       'createdAt': dateNow,
       'updatedAt': dateNow
     });
