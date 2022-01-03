@@ -7,7 +7,6 @@ class LoginForm extends StatefulWidget {
   _LoginFormState createState() => _LoginFormState();
 }
 class _LoginFormState extends State<LoginForm> {
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Admins");
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
   final ctrlPassword = TextEditingController();
