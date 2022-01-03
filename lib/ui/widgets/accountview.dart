@@ -14,9 +14,7 @@ class _AccountViewState extends State<AccountView> {
     if (admins == null) {
       return Container();
     }
-    if (admins.email == "a@a.com"){
-      ActivityServices.showToastBlack("berhasil ehe");
-    }
+   
     return Stack(
       children: [
         Container(
