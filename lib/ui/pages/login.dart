@@ -124,8 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                         const SizedBox(height: 24),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacementNamed(
-                              context, Register.routeName);
+                            Navigator.pushReplacementNamed(context, Register.routeName);
                           },
                           child: const Text(
                             "Not registered yet? Join Now.",
