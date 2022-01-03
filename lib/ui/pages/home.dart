@@ -7,30 +7,45 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 class _HomeState extends State<Home> {
-  int _selectedIntex = 0;
+
+  bool isLoading = false;
+
+  int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const Catalog(),
     const Request(),
+    const Approved(),
     const Profile()
   ];
+
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIntex = index;
+      _selectedIndex = index;
     });
   }
+
   @override
-  void initState() {
+  void InitState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: _widgetOptions.elementAt(_selectedIntex)),
-      bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
-        BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
-        BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Profiles')
-      ], currentIndex: _selectedIntex, onTap: _onItemTapped, elevation: 0)
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
+          BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
+          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Approved'),
+          BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Profiles')
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
