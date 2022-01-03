@@ -10,7 +10,6 @@ class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
   final ctrlPassword = TextEditingController();
-  String check = "no";
   String msg;
   bool isVisible = true;
   bool isLoading = false;
