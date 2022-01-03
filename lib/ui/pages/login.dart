@@ -6,7 +6,6 @@ class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
-
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
@@ -84,8 +83,8 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            return value.isEmpty
-                            ? "Password must have at least 1 characters!"
+                            return value.length < 6
+                            ? "Password must have at least 6 characters!"
                             : null;
                           }
                         ),

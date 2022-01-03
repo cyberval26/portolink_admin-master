@@ -83,8 +83,8 @@ class _RegisterState extends State<Register> {
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            return value.isEmpty
-                            ? "Password must have at least 1 character!"
+                            return value.length < 6
+                            ? "Password must have at least 6 character!"
                             : null;
                           }
                         ),
