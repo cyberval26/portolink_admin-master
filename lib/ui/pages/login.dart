@@ -6,7 +6,6 @@ class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
-
 class _LoginFormState extends State<LoginForm> {
   CollectionReference templateCollection = FirebaseFirestore.instance.collection("Admins");
   final _formKey = GlobalKey<FormState>();
@@ -87,8 +86,8 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            return value.isEmpty
-                            ? "Password must have at least 1 characters!"
+                            return value.length < 6
+                            ? "Password must have at least 6 characters!"
                             : null;
                           }
                         ),
@@ -99,10 +98,10 @@ class _LoginFormState extends State<LoginForm> {
                               setState(() {
                                 isLoading = true;
                               });
-                                msg = await AuthServices.signIn(
-                                    ctrlEmail.text,
-                                    ctrlPassword.text
-                                );
+                              msg = await AuthServices.signIn(
+                                ctrlEmail.text,
+                                ctrlPassword.text
+                              );
                               if (msg == "Success") {
                                 setState(() {
                                   isLoading = false;

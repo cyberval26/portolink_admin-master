@@ -1,7 +1,6 @@
 part of 'models.dart';
 
-
-class Pending{
+class Pending {
   final String pendingId;
   final String templateName;
   final String link;
@@ -10,21 +9,16 @@ class Pending{
   final String status;
   final String addBy;
   final String orderBy;
-
-
   const Pending(
-      this.pendingId,
-      this.templateName,
-      this.link,
-      this.color,
-      this.description,
-      this.status,
-      this.addBy,
-      this.orderBy
-      );
-
-  @override
-  // TODO: implement props
+    this.pendingId,
+    this.templateName,
+    this.link,
+    this.color,
+    this.description,
+    this.status,
+    this.addBy,
+    this.orderBy
+  );
   List<Object> get props => [
     pendingId,
     templateName,
@@ -33,6 +27,6 @@ class Pending{
     description,
     status,
     addBy,
-    orderBy,
+    orderBy
   ];
 }

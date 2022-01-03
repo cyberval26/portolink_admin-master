@@ -3,17 +3,13 @@ part of'services.dart';
 class PendingServices{
   //setup cloud firestore
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("pending");
-  // static CollectionReference pinsCollection = FirebaseFirestore.instance.collection("pins");
+  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pending");
   static DocumentReference pendingDocument;
-
   //setup storage
   static Reference ref;
   static UploadTask uploadTask;
   static String imgUrl;
-
   static Future<bool> addPending(Pending pending, PickedFile imgFile) async{
-    String dateNow = ActivityServices.dateNow();
     await Firebase.initializeApp();
     pendingDocument = await pendingCollection.add({
       'pendingId' : pending.pendingId,
@@ -22,32 +18,20 @@ class PendingServices{
       'color':pending.color,
       'description' : pending.description,
       'status' : "In Progress",
-      'addBy':auth.currentUser.uid,
+      'addBy':auth.currentUser.uid
     });
     if(pendingDocument != null){
-      /* ref = FirebaseStorage.instance.ref().child("images").child(orderDocument.id+"jpg");
-         uploadTask = ref.putFile(File(imgFile.path));
-
-         await uploadTask.whenComplete(()=>
-            ref.getDownloadURL().then((value) => imgUrl = value,)
-         );*/
-
-      pendingCollection.doc(pendingDocument.id).update(
-          {
-            'pendingId' : pendingDocument.id,
-          }
-      );
-
+      pendingCollection.doc(pendingDocument.id).update({
+        'pendingId' : pendingDocument.id
+      });
       return true;
-    }else{
+    } else {
       return false;
     }
   }
-
   static Future<bool> approvedPending(String link, String id) async {
     bool result = true;
     await Firebase.initializeApp();
-    String dateNow = ActivityServices.dateNow();
     await pendingCollection.doc(id).update({
       'link' : link,
       'status' : "approved",
@@ -56,14 +40,11 @@ class PendingServices{
     }).catchError((onError){
       result = false;
     });
-
     return result;
   }
-
   static Future<bool> rejectedPending( String id) async {
     bool result = true;
     await Firebase.initializeApp();
-    String dateNow = ActivityServices.dateNow();
     await pendingCollection.doc(id).update({
       'status' : "rejected",
     }).then((value) {
@@ -71,9 +52,6 @@ class PendingServices{
     }).catchError((onError){
       result = false;
     });
-
     return result;
   }
-
-
 }

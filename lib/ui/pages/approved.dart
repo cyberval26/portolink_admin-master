@@ -7,7 +7,7 @@ class Approved extends StatefulWidget {
 }
 class _ApprovedState extends State<Approved> {
   String uid = FirebaseAuth.instance.currentUser.uid;
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("order");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Order");
   Widget buildBody() {
     return Container(
       color: Colors.white,
@@ -24,7 +24,6 @@ class _ApprovedState extends State<Approved> {
           }
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
-                //ActivityServices.showToastWhite("gagal ehe" + doc['contact']);
                 Requests requests;
                 if(doc['status'] == "finished") {
                 requests = Requests(
@@ -39,7 +38,7 @@ class _ApprovedState extends State<Approved> {
                     doc['status'],
                     doc['createdAt']
                 );
-              }else{
+              } else {
                 requests = null;
               }
               return ApprovedView(requests: requests);
