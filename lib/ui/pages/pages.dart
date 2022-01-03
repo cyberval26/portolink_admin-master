@@ -20,3 +20,4 @@ part 'request.dart';
 part 'CRUD/addtemplate.dart';
 part 'CRUD/edittemplate.dart';
 part'approved.dart';
+part'approvedmenu.dart';

@@ -153,7 +153,7 @@ class _RequestViewState extends State<RequestView> {
                                                         label: const Text(
                                                             "Approved"),
                                                         onPressed: () async {
-                                                          bool result = await PendingServices
+                                                         /* bool result = await PendingServices
                                                               .approvedPending(
                                                               requests
                                                                   .pendingBy);
@@ -168,7 +168,13 @@ class _RequestViewState extends State<RequestView> {
                                                             ActivityServices
                                                                 .showToastBlack(
                                                                 "Failed");
-                                                          }
+                                                          }*/
+                                                          Navigator.push(context, MaterialPageRoute(
+                                                              builder: (context) => ApprovedMenu(
+                                                                  orderId: requests.orderId,
+                                                                  pendingBy:requests.pendingBy,
+                                                              )
+                                                          ));
                                                         },
                                                         style: ElevatedButton
                                                             .styleFrom(

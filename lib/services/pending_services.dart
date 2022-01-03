@@ -44,11 +44,12 @@ class PendingServices{
     }
   }
 
-  static Future<bool> approvedPending( String id) async {
+  static Future<bool> approvedPending(String link, String id) async {
     bool result = true;
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     await pendingCollection.doc(id).update({
+      'link' : link,
       'status' : "approved",
     }).then((value) {
       result = true;

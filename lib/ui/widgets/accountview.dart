@@ -14,7 +14,7 @@ class _AccountViewState extends State<AccountView> {
     if (admins == null) {
       return Container();
     }
-   
+
     return Stack(
       children: [
         Container(
