@@ -7,7 +7,7 @@ class Request extends StatefulWidget {
 }
 class _RequestState extends State<Request> {
   String uid = FirebaseAuth.instance.currentUser.uid;
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Order");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("order");
   Widget buildBody() {
     return Container(
       color: Colors.white,
@@ -26,16 +26,14 @@ class _RequestState extends State<Request> {
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Requests requests;
               requests = Requests(
-                doc['orderId'],
-                doc['templateName'],
-                doc['color'],
-                doc['contact'],
-                doc['requestDescription'],
-                doc['photoReference'],
-                doc['addBy'],
-                doc['pendingBy'],
-                doc['status'],
-                doc['createdAt']
+                  doc['orderId'],
+                  doc['templateName'],
+                  doc['color'],
+                  doc[ 'contact'],
+                  doc['requestDescription'],
+                  doc['photoReference'],
+                  doc['addBy'],
+                  doc['createdAt']
               );
               return RequestView(requests: requests);
             }).toList()

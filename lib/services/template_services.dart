@@ -18,11 +18,11 @@ class TemplateServices {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     tDoc = await tCollection.add({
-      'templateId': templates.tid,
-      'templateName': templates.name,
-      'description': templates.desc,
+      'tid': templates.tid,
+      'name': templates.name,
+      'desc': templates.desc,
       'price': templates.price,
-      'photoFile': templates.photo,
+      'photo': templates.photo,
       'createdAt': dateNow,
       'updatedAt': dateNow
     });
@@ -41,11 +41,11 @@ class TemplateServices {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     await tCollection.doc(id).update({
-      'templateId': id,
-      'templateName': templates.name,
-      'description': templates.desc,
+      'tid': id,
+      'name': templates.name,
+      'desc': templates.desc,
       'price': templates.price,
-      'photoFile': photo,
+      'photo': photo,
       'updatedAt': dateNow
     }).then((value) {
       result = true;

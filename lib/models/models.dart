@@ -1,4 +1,4 @@
 part 'admins.dart';
-part 'pending.dart';
+part 'pendings.dart';
 part 'requests.dart';
 part 'templates.dart';

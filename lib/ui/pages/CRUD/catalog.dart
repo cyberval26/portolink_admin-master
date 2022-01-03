@@ -7,7 +7,7 @@ class Catalog extends StatefulWidget {
 }
 class _CatalogState extends State<Catalog> {
   String uid = FirebaseAuth.instance.currentUser.uid;
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("template");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Templates");
   Widget buildBody() {
     return Container(
       color: Colors.white,
@@ -26,11 +26,11 @@ class _CatalogState extends State<Catalog> {
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Templates templates;
                 templates = Templates(
-                  doc['templateId'],
-                  doc['templateName'],
-                  doc['description'],
+                  doc['tid'],
+                  doc['name'],
+                  doc['desc'],
                   doc['price'],
-                  doc['photoFile'],
+                  doc['photo']
                 );
               return TemplateView(templates: templates);
             }).toList()

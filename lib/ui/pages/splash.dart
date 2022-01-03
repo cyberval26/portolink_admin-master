@@ -27,6 +27,7 @@ class _SplashState extends State<Splash> {
   }
   @override
   Widget build(BuildContext context) {
-    return Image.asset('assets/images/portolink.png',  width: 100, height: 100);
+    return const Image(image: AssetImage('assets/images/portolink.png')
+    );
   }
 }

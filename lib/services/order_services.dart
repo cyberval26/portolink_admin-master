@@ -1,11 +1,9 @@
 part of 'services.dart';
 
 class OrderServices{
-  //setup cloud firestore
    static FirebaseAuth auth = FirebaseAuth.instance;
    static CollectionReference orderCollection = FirebaseFirestore.instance.collection("Order");
    static DocumentReference orderDocument;
-   //setup storage
    static Reference ref;
    static UploadTask uploadTask;
    static String imgUrl;

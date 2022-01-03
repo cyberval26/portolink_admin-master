@@ -4,7 +4,7 @@ import 'package:portolink/models/models.dart';
 import 'package:portolink/services/services.dart';
 import 'package:portolink/ui/pages/pages.dart';
 
-part 'templateview.dart';
 part 'accountview.dart';
-part 'requestview.dart';
 part 'approvedview.dart';
+part 'requestview.dart';
+part 'templateview.dart';

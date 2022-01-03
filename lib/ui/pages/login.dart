@@ -6,11 +6,11 @@ class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();
 }
+
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final ctrlEmail = TextEditingController();
   final ctrlPassword = TextEditingController();
-  String msg;
   bool isVisible = true;
   bool isLoading = false;
   @override
@@ -84,8 +84,8 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            return value.length < 6
-                            ? "Password must have at least 6 characters!"
+                            return value.isEmpty
+                            ? "Password must have at least 1 characters!"
                             : null;
                           }
                         ),
@@ -96,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
                               setState(() {
                                 isLoading = true;
                               });
-                              msg = await AuthServices.signIn(
+                              String msg = await AuthServices.signIn(
                                 ctrlEmail.text,
                                 ctrlPassword.text
                               );
@@ -124,7 +124,8 @@ class _LoginFormState extends State<LoginForm> {
                         const SizedBox(height: 24),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushReplacementNamed(context, Register.routeName);
+                            Navigator.pushReplacementNamed(
+                              context, Register.routeName);
                           },
                           child: const Text(
                             "Not registered yet? Join Now.",

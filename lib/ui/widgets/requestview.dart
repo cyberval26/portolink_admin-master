@@ -3,7 +3,6 @@ part of 'widgets.dart';
 class RequestView extends StatefulWidget {
   const RequestView({Key key, this.requests}) : super(key: key);
   final Requests requests;
-
   @override
   _RequestViewState createState() => _RequestViewState();
 }
@@ -11,9 +10,6 @@ class _RequestViewState extends State<RequestView> {
   @override
   Widget build(BuildContext context) {
     Requests requests = widget.requests;
-    if (requests == null) {
-      Container();
-    }
     return Card(
       color: Colors.blue[100],
       elevation: 1,
@@ -24,9 +20,7 @@ class _RequestViewState extends State<RequestView> {
         child: ListTile(
           title: Text(
             requests.templateName.toUpperCase(),
-            style: const TextStyle(fontSize: 40,
-            fontWeight: FontWeight.bold,
-            decoration: TextDecoration.underline),
+            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, decoration: TextDecoration.underline),
             maxLines: 1,
             softWrap: true
           ),
@@ -54,10 +48,7 @@ class _RequestViewState extends State<RequestView> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(
-                                  "Contact : " + requests.contact,
-                                  style: const TextStyle( fontSize: 20)
-                                ),
+                                Text("Contact : " + requests.contact, style: const TextStyle(fontSize: 20)),
                                 const SizedBox(height: 48),
                                 Image.network(requests.photoReference),
                                 const SizedBox(height: 24),
@@ -91,8 +82,7 @@ class _RequestViewState extends State<RequestView> {
                                   icon: const Icon(CupertinoIcons.clear),
                                   label: const Text("Reject"),
                                   onPressed: () async {
-                                    bool result = await PendingServices.rejectedPending(requests.pendingBy);
-                                    await OrderServices.deleteOrder( requests.orderId);
+                                    bool result = await TemplateServices.deleteTemplate(requests.orderId);
                                     if (result) {
                                       ActivityServices.showToastWhite("Success");
                                     } else {
@@ -127,14 +117,14 @@ class _RequestViewState extends State<RequestView> {
                                 const SizedBox(height: 24),
                                 ElevatedButton.icon(
                                   icon: const Icon(Icons.done),
-                                  label: const Text("Approved"),
+                                  label: const Text("Accept"),
                                   onPressed: () async {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => ApprovedMenu(
-                                        orderId: requests.orderId,
-                                        pendingBy:requests.pendingBy
-                                      )
-                                    ));
+                                    bool result = await TemplateServices.deleteTemplate(requests.orderId);
+                                    if (result) {
+                                      ActivityServices.showToastWhite("Success");
+                                    } else {
+                                      ActivityServices.showToastBlack("Failed");
+                                    }
                                   },
                                   style: ElevatedButton.styleFrom(primary: Colors.green)
                                 )

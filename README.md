@@ -1,6 +1,6 @@
-# Portolink
+# Portolink Admin
 
-Order your own Portofolio.
+Create your Portofolio.
 
 ## Getting Started
 

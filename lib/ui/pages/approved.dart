@@ -34,8 +34,6 @@ class _ApprovedState extends State<Approved> {
                     doc['requestDescription'],
                     doc['photoReference'],
                     doc['addBy'],
-                    doc['pendingBy'],
-                    doc['status'],
                     doc['createdAt']
                 );
               } else {
