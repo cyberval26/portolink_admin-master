@@ -2,7 +2,7 @@ part of'services.dart';
 
 class PendingServices{
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pending");
+  static CollectionReference pendingCollection = FirebaseFirestore.instance.collection("Pendings");
   static DocumentReference pendingDocument;
   static Reference ref;
   static UploadTask uploadTask;

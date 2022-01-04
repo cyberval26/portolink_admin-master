@@ -7,7 +7,7 @@ class Request extends StatefulWidget {
 }
 class _RequestState extends State<Request> {
   String uid = FirebaseAuth.instance.currentUser.uid;
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Order");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Orders");
   Widget buildBody() {
     return Container(
       color: Colors.white,

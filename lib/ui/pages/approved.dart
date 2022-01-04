@@ -7,7 +7,7 @@ class Approved extends StatefulWidget {
 }
 class _ApprovedState extends State<Approved> {
   String uid = FirebaseAuth.instance.currentUser.uid;
-  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Order");
+  CollectionReference templateCollection = FirebaseFirestore.instance.collection("Orders");
   Widget buildBody() {
     return Container(
       color: Colors.white,

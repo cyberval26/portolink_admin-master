@@ -69,7 +69,7 @@ class _TemplateViewState extends State<TemplateView> {
                                         photo: templates.photo
                                       )
                                     ));
-                                  }
+                                  }       
                                 ),
                                 const SizedBox(height: 24),
                                 ElevatedButton.icon(
