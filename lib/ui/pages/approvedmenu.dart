@@ -66,7 +66,7 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                               setState(() {
                                 isLoading = true;
                               });
-                              bool result = await PendingServices.approvedPending(ctrlLink.text,widget.pendingBy);
+                              bool result = await PendingServices.approvedPending(ctrlLink.text, widget.pendingBy);
                               await OrderServices.approvedOrder(widget.orderId);
                               if (result) {
                                 ActivityServices.showToast("Approved Success", Colors.grey);
@@ -82,8 +82,8 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                                 ActivityServices.showToast("Please check all  the fields.", Colors.red);
                             }
                           },
-                          icon: const Icon(Icons.upload),
-                          label: const Text("Update Template"),
+                          icon: const Icon(Icons.send),
+                          label: const Text("Send Link"),
                           style: ElevatedButton.styleFrom(primary: Colors.green, elevation: 4)
                         )
                       ]

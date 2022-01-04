@@ -7,28 +7,19 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 class _HomeState extends State<Home> {
-
   bool isLoading = false;
-
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     const Catalog(),
     const Request(),
-    const Approved(),
+    const Finished(),
     const Profile()
   ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
-  @override
-  void InitState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +31,7 @@ class _HomeState extends State<Home> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
           BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
-          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Approved'),
+          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Finished'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profiles')
         ],
         currentIndex: _selectedIndex,
