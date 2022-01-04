@@ -25,10 +25,6 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
   Widget build(BuildContext context) {
     args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Approved Menu'),
-          centerTitle: true
-      ),
       body: Container(
         color: Colors.white,
         width: double.infinity,

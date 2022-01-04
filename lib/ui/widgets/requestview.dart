@@ -59,6 +59,8 @@ class _RequestViewState extends State<RequestView> {
                                 const SizedBox(height: 48),
                                 Image.network(requests.photoReference),
                                 const SizedBox(height: 24),
+                                SelectableText(requests.photoReference),
+                                const SizedBox(height: 24),
                                 Text("Description : " + requests.requestDescription),
                                 const SizedBox(height: 24)
                               ]
