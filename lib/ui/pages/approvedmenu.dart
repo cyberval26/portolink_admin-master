@@ -73,17 +73,17 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                               bool result = await PendingServices.approvedPending(ctrlLink.text,widget.pendingBy);
                               await OrderServices.approvedOrder(widget.orderId);
                               if (result) {
-                                ActivityServices.showToastWhite("Approved Success");
+                                ActivityServices.showToast("Approved Success", Colors.grey);
                                 clearForm();
                                 Navigator.pushReplacementNamed(context, Home.routeName);
                                 setState(() {
                                     isLoading = false;
                                 });
                               } else {
-                                ActivityServices.showToastBlack("Failed");
+                                ActivityServices.showToast("Approved Failed", Colors.red);
                               }
                             } else {
-                                ActivityServices.showToastWhite("Please check all  the fields.");
+                                ActivityServices.showToast("Please check all  the fields.", Colors.red);
                             }
                           },
                           icon: const Icon(Icons.upload),

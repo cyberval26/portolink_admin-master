@@ -66,7 +66,7 @@ class _RegisterState extends State<Register> {
                           obscureText: isVisible,
                           decoration: InputDecoration(
                             labelText: "Password",
-                            prefixIcon: const Icon(Icons.vpn_key),
+                            prefixIcon: const Icon(Icons.lock),
                             border: const OutlineInputBorder(),
                             suffixIcon: GestureDetector(
                               onTap: () {
@@ -103,7 +103,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastWhite("Register Success");
+                                ActivityServices.showToast("Register Success", Colors.grey);
                                 Navigator.pushReplacementNamed(
                                   context, LoginForm.routeName
                                 );
@@ -111,7 +111,7 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastBlack(msg);
+                                ActivityServices.showToast("Register Failed", Colors.red);
                               }
                             } else {
                               Fluttertoast.showToast(

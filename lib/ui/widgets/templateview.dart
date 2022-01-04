@@ -78,9 +78,9 @@ class _TemplateViewState extends State<TemplateView> {
                                   onPressed: () async {
                                     bool result = await TemplateServices.deleteTemplate(templates.tid);
                                     if (result) {
-                                      ActivityServices.showToastWhite("Delete Success");
+                                      ActivityServices.showToast("Delete Success", Colors.grey);
                                     } else {
-                                      ActivityServices.showToastBlack("Delete Failed");
+                                      ActivityServices.showToast("Delete Failed", Colors.red);
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(primary: Colors.red)

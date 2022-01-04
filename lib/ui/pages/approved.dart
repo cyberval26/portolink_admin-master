@@ -39,9 +39,6 @@ class _ApprovedState extends State<Approved> {
                      doc['createdAt']
                  );
                }
-             // } else {
-             //   requests = null;
-             // }
               return ApprovedView(requests: requests);
             }).toList()
           );

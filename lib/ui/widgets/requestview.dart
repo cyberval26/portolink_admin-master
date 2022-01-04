@@ -105,12 +105,12 @@ class _RequestViewState extends State<RequestView> {
                                                               requests.orderId);
                                                           if (result) {
                                                             ActivityServices
-                                                                .showToastWhite(
-                                                                "Success");
+                                                                .showToast(
+                                                                "Reject Success", Colors.grey);
                                                           } else {
                                                             ActivityServices
-                                                                .showToastBlack(
-                                                                "Failed");
+                                                                .showToast(
+                                                                "Reject Failed", Colors.red);
                                                           }
                                                         },
                                                         style: ElevatedButton

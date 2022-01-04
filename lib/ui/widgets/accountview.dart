@@ -43,8 +43,8 @@ class _AccountViewState extends State<AccountView> {
             ]
           )
         ),
-        Container(
-          alignment: Alignment.bottomCenter,
+        Align(
+          alignment: const AlignmentDirectional(0, 0.7),
           child: ElevatedButton.icon(
             onPressed: () async {
               setState(() {
@@ -55,14 +55,14 @@ class _AccountViewState extends State<AccountView> {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToastWhite("Logout Success");
+                  ActivityServices.showToast("Logout Success", Colors.grey);
                   Navigator.pushReplacementNamed(
                       context, LoginForm.routeName);
                 } else {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToastBlack("Logout Failed");
+                  ActivityServices.showToast("Logout Failed", Colors.red);
                 }
               });
             },

@@ -66,7 +66,7 @@ class _LoginFormState extends State<LoginForm> {
                           obscureText: isVisible,
                             decoration: InputDecoration(
                             labelText: "Password",
-                            prefixIcon: const Icon(Icons.vpn_key),
+                            prefixIcon: const Icon(Icons.lock),
                             border: const OutlineInputBorder(),
                             suffixIcon: GestureDetector(
                               onTap: () {
@@ -103,13 +103,13 @@ class _LoginFormState extends State<LoginForm> {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastWhite("Login Success");
+                                ActivityServices.showToast("Login Success", Colors.grey);
                                 Navigator.pushReplacementNamed(context, Home.routeName);
                               } else {
                                 setState(() {
                                   isLoading = false;
                                 });
-                                ActivityServices.showToastBlack(msg);
+                                ActivityServices.showToast("Login Failed", Colors.red);
                               }
                             }
                           },

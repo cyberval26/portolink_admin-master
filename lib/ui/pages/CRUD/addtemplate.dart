@@ -183,17 +183,17 @@ class _AddTemplateState extends State<AddTemplate> {
                               );
                               await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToastBlack("Add template successful!");
+                                  ActivityServices.showToast("Add template successful!", Colors.grey);
                                   clearForm();
                                   setState(() {
                                     isLoading = false;
                                   });
                                 } else {
-                                    ActivityServices.showToastWhite("Add template failed.");
+                                    ActivityServices.showToast("Add template failed.", Colors.red);
                                 }
                               });
                             } else {
-                              ActivityServices.showToastWhite("Please check all  the fields.");
+                              ActivityServices.showToast("Please check all  the fields.", Colors.red);
                             }
                           },
                           icon: const Icon(Icons.upload),
