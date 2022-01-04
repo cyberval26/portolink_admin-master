@@ -44,7 +44,7 @@ class PendingServices{
     bool result = true;
     await Firebase.initializeApp();
     await pendingCollection.doc(id).update({
-      'status' : "rejected",
+      'status' : "Rejected",
     }).then((value) {
       result = true;
     }).catchError((onError){
