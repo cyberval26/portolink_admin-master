@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
           BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
           BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Approved'),
-          BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Profiles')
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profiles')
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

@@ -8,6 +8,8 @@ class Requests {
   final String requestDescription;
   final String photoReference;
   final String addBy;
+  final String pendingBy;
+  final String status;
   final String createdAt;
   const Requests(
     this.orderId,
@@ -17,6 +19,8 @@ class Requests {
     this.requestDescription,
     this.photoReference,
     this.addBy,
+    this.pendingBy,
+    this.status,
     this.createdAt
   );
   List<Object> get props => [
@@ -27,6 +31,8 @@ class Requests {
     requestDescription,
     photoReference,
     addBy,
+    pendingBy,
+    status,
     createdAt
   ];
 }

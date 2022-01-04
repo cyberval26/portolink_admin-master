@@ -11,7 +11,7 @@ class _ApprovedViewState extends State<ApprovedView> {
   Widget build(BuildContext context) {
     Requests requests = widget.requests;
     if (requests == null) {
-      Container();
+      return Container();
     } 
     return Card(
       color: Colors.blue[100],
@@ -24,7 +24,7 @@ class _ApprovedViewState extends State<ApprovedView> {
           title: Text(
             requests.templateName.toUpperCase(),
             style: const TextStyle(
-              fontSize: 40,
+              fontSize: 17,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.underline
             ),

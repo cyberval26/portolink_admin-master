@@ -25,20 +25,23 @@ class _ApprovedState extends State<Approved> {
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
                 Requests requests;
-                if(doc['status'] == "finished") {
-                requests = Requests(
-                    doc['orderId'],
-                    doc['templateName'],
-                    doc['color'],
-                    doc['contact'],
-                    doc['requestDescription'],
-                    doc['photoReference'],
-                    doc['addBy'],
-                    doc['createdAt']
-                );
-              } else {
-                requests = null;
-              }
+               if(doc['status'] == "finished") {
+                 requests = Requests(
+                     doc['orderId'],
+                     doc['templateName'],
+                     doc['color'],
+                     doc['contact'],
+                     doc['requestDescription'],
+                     doc['photoReference'],
+                     doc['addBy'],
+                     doc['pendingBy'],
+                     doc['status'],
+                     doc['createdAt']
+                 );
+               }
+             // } else {
+             //   requests = null;
+             // }
               return ApprovedView(requests: requests);
             }).toList()
           );
