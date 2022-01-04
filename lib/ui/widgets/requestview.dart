@@ -90,7 +90,7 @@ class _RequestViewState extends State<RequestView> {
                                   label: const Text("Reject"),
                                   onPressed: () async {
                                     bool result = await PendingServices.rejectedPending(requests.pendingBy);
-                                    await OrderServices.deleteOrder( requests.orderId);
+                                    await OrderServices.deleteOrder(requests.orderId);
                                     if (result) {
                                       ActivityServices.showToast("Reject Success", Colors.grey);
                                     } else {
