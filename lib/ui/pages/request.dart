@@ -25,7 +25,7 @@ class _RequestState extends State<Request> {
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot doc) {
               Requests requests;
-              if(doc['status'] != "finished") {
+              if(doc['status'] != "Finished") {
                 requests = Requests(
                     doc['orderId'],
                     doc['templateName'],

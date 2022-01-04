@@ -14,14 +14,14 @@ class ActivityServices {
       textColor: Colors.white,
       fontSize: 14
     );
-  } 
+  }
   static Container loadings() {
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
       height: double.infinity,
       color: Colors.black54,
-      child:  const SpinKitRipple(size: 500, color: Color(0xFF14D7F3))
+      child: const SpinKitRipple(size: 500, color: Color(0xFF14D7F3))
     );
   }
   static String toIDR(String price) {

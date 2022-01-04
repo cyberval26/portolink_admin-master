@@ -13,7 +13,7 @@ import 'package:portolink/ui/widgets/widgets.dart';
 part 'CRUD/addtemplate.dart';
 part 'CRUD/catalog.dart';
 part 'CRUD/edittemplate.dart';
-part 'finished.dart';
+part 'approved.dart';
 part 'approvedmenu.dart';
 part 'home.dart';
 part 'login.dart';

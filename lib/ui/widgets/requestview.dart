@@ -91,13 +91,12 @@ class _RequestViewState extends State<RequestView> {
                                   icon: const Icon(CupertinoIcons.clear),
                                   label: const Text("Reject"),
                                   onPressed: () async {
-                                    bool result = await PendingServices.rejectedPending(requests.pendingBy);
-                                    await OrderServices.deleteOrder(requests.orderId);
-                                    if (result) {
-                                      ActivityServices.showToast("Reject Success", Colors.grey);
-                                    } else {
-                                      ActivityServices.showToast("Reject Failed", Colors.red);
-                                    }
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) => RejectedMenu(
+                                        orderId: requests.orderId,
+                                        pendingBy: requests.pendingBy,
+                                      )
+                                    ));
                                   },
                                   style: ElevatedButton.styleFrom(primary: Colors.red)
                                 )

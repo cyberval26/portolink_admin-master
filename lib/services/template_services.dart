@@ -49,17 +49,17 @@ class TemplateServices {
       'updatedAt': dateNow
     }).then((value) {
       result = true;
-    }).catchError((onError){
+    }).catchError((onError) {
       result = false;
     });
-    if(imgFile != null) {
+    if (imgFile != null) {
       ref = FirebaseStorage.instance.ref().child("images").child(tDoc.id + "jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
       await tCollection.doc(tDoc.id).update({'photo': imgUrl});
     }
     return result;
-   }
+  }
   static Future<bool> deleteTemplate(String id) async {
     bool result = true;
     await Firebase.initializeApp();

@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class Finished extends StatefulWidget {
-  const Finished({Key key}) : super(key: key);
+class Approved extends StatefulWidget {
+  const Approved({Key key}) : super(key: key);
   @override
-  _FinishedState createState() => _FinishedState();
+  _ApprovedState createState() => _ApprovedState();
 }
-class _FinishedState extends State<Finished> {
+class _ApprovedState extends State<Approved> {
   String uid = FirebaseAuth.instance.currentUser.uid;
   CollectionReference templateCollection = FirebaseFirestore.instance.collection("Orders");
   Widget buildBody() {
@@ -27,16 +27,16 @@ class _FinishedState extends State<Finished> {
                 Requests requests;
                if(doc['status'] == "Finished") {
                  requests = Requests(
-                    doc['orderId'],
-                    doc['templateName'],
-                    doc['color'],
-                    doc['contact'],
-                    doc['requestDescription'],
-                    doc['photoReference'],
-                    doc['addBy'],
-                    doc['pendingBy'],
-                    doc['status'],
-                    doc['createdAt']
+                   doc['orderId'],
+                   doc['templateName'],
+                   doc['color'],
+                   doc['contact'],
+                   doc['requestDescription'],
+                   doc['photoReference'],
+                   doc['addBy'],
+                   doc['pendingBy'],
+                   doc['status'],
+                   doc['createdAt']
                  );
                }
               return ApprovedView(requests: requests);

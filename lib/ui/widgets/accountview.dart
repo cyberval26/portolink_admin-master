@@ -24,7 +24,7 @@ class _AccountViewState extends State<AccountView> {
             children: [
               Image.asset("assets/images/portolink.png", height: 300),
               const SizedBox(height: 15),
-              Row(mainAxisAlignment: MainAxisAlignment.center,),
+              Row(mainAxisAlignment: MainAxisAlignment.center),
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +34,7 @@ class _AccountViewState extends State<AccountView> {
                     color: Colors.black54
                   ),
                   Text(
-                    "\t\t\t" + admins.email,
+                    "    " + admins.email,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 24)
                   ),
@@ -56,8 +56,7 @@ class _AccountViewState extends State<AccountView> {
                     isLoading = false;
                   });
                   ActivityServices.showToast("Logout Success", Colors.grey);
-                  Navigator.pushReplacementNamed(
-                      context, LoginForm.routeName);
+                  Navigator.pushReplacementNamed(context, LoginForm.routeName);
                 } else {
                   setState(() {
                     isLoading = false;
@@ -69,7 +68,34 @@ class _AccountViewState extends State<AccountView> {
             icon: const Icon(Icons.logout),
             label: const Text("Logout"),
           )
-        )
+        ),
+        // Align(
+        //   alignment: const AlignmentDirectional(0, 0.9),
+        //   child: ElevatedButton.icon(
+        //     onPressed: () async {
+        //       setState(() {
+        //         isLoading = true;
+        //       });
+        //       await AuthServices.deleteUser(admins.aid).then((value) {
+        //         if (value == true) {
+        //           setState(() {
+        //             isLoading = false;
+        //           });
+        //           ActivityServices.showToast("Delete Account Success", Colors.grey);
+        //           Navigator.pushReplacementNamed(context, LoginForm.routeName);
+        //         } else {
+        //           setState(() {
+        //             isLoading = false;
+        //           });
+        //           ActivityServices.showToast("Delete Account Failed", Colors.red);
+        //         }
+        //       });
+        //     },
+        //     icon: const Icon(Icons.clear),
+        //     label: const Text("Delete Account"),
+        //     style: ElevatedButton.styleFrom(primary: Colors.red)
+        //   )
+        // )
       ]
     );
   }

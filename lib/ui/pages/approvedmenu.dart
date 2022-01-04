@@ -2,7 +2,6 @@ part of "pages.dart";
 
 class ApprovedMenu extends StatefulWidget {
   const ApprovedMenu({Key key, this.orderId, this.pendingBy}) : super(key: key);
-  static const String routeName = "/edittemplate";
   final String orderId;
   final String pendingBy;
   @override
@@ -42,6 +41,7 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                         const SizedBox(height: 40),
                         TextFormField(
                           controller: ctrlLink,
+                          maxLines: 3,
                           keyboardType: TextInputType.name,
                           decoration: const InputDecoration(
                             fillColor: Colors.white,
@@ -69,14 +69,14 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                               bool result = await PendingServices.approvedPending(ctrlLink.text, widget.pendingBy);
                               await OrderServices.approvedOrder(widget.orderId);
                               if (result) {
-                                ActivityServices.showToast("Approved Success", Colors.grey);
+                                ActivityServices.showToast("Approve Success", Colors.grey);
                                 clearForm();
                                 Navigator.pushReplacementNamed(context, Home.routeName);
                                 setState(() {
                                     isLoading = false;
                                 });
                               } else {
-                                ActivityServices.showToast("Approved Failed", Colors.red);
+                                ActivityServices.showToast("Approve Failed", Colors.red);
                               }
                             } else {
                                 ActivityServices.showToast("Please check all  the fields.", Colors.red);

@@ -12,7 +12,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _widgetOptions = <Widget>[
     const Catalog(),
     const Request(),
-    const Finished(),
+    const Approved(),
     const Profile()
   ];
   void _onItemTapped(int index) {
@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
           BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
-          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Finished'),
+          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Approved'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profiles')
         ],
         currentIndex: _selectedIndex,

@@ -4,6 +4,7 @@ class Pending {
   final String pendingId;
   final String templateName;
   final String link;
+  final String reason;
   final String color;
   final String description;
   final String status;
@@ -13,6 +14,7 @@ class Pending {
     this.pendingId,
     this.templateName,
     this.link,
+    this.reason,
     this.color,
     this.description,
     this.status,
@@ -23,6 +25,7 @@ class Pending {
     pendingId,
     templateName,
     link,
+    reason,
     color,
     description,
     status,
