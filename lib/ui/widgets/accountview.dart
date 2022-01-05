@@ -45,8 +45,8 @@ class _AccountViewState extends State<AccountView> {
            // shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),
             children: [
-              Image.asset("assets/images/portolink.png", height: 300),
-              const SizedBox(height: 15),
+              Image.asset("assets/images/portolink.png", height: 250),
+              const SizedBox(height: 30),
               Row(
                 children: [
                   _prefixIcon(Icons.email),
@@ -56,10 +56,10 @@ class _AccountViewState extends State<AccountView> {
                       Text('Email',
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 15.0,
+                              fontSize: 18.0,
                               color: Colors.black)),
                       SizedBox(height: 1),
-                      Text(admins.email),
+                      Text(admins.email, style: TextStyle(fontSize:16),),
                     ],
                   ),
                 ],
@@ -67,20 +67,6 @@ class _AccountViewState extends State<AccountView> {
 
               Row(mainAxisAlignment: MainAxisAlignment.center),
               const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.email,
-                    color: Colors.black54
-                  ),
-                  Text(
-                    "    " + admins.email,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24)
-                  ),
-                ]
-              )
             ]
           )
         ),

@@ -202,6 +202,7 @@ class _EditTemplateState extends State<EditTemplate> {
                                 if (value == true) {
                                   ActivityServices.showToast("Update template successful!", Colors.grey);
                                   clearForm();
+                                  Navigator.pushReplacementNamed(context, Home.routeName);
                                   setState(() {
                                     isLoading = false;
                                   });
