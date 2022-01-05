@@ -6,59 +6,67 @@ class AccountView extends StatefulWidget {
   @override
   _AccountViewState createState() => _AccountViewState();
 }
+_prefixIcon(IconData iconData) {
+  return ConstrainedBox(
+    constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+    child: Container(
+      padding: const EdgeInsets.only( top: 16.0, bottom: 16.0),
+      margin: const EdgeInsets.only(right: 8.0),
+      decoration: BoxDecoration(
+        color: Colors.blue[100].withOpacity(0.2),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+          bottomRight: Radius.circular(10.0)
+        )
+      ),
+      child: Icon(
+        iconData,
+        size: 20,
+        color: Colors.blue,
+      )
+    )
+  );
+}
 class _AccountViewState extends State<AccountView> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     Admins admins = widget.admins;
     if (admins == null) {
-      ActivityServices.showToast2("Can't load your profile", const Color(0xFFFF0000));
       return Container();
     }
     return Stack(
       children: [
         Container(
+          padding: const EdgeInsets.all(20),
           alignment: Alignment.topCenter,
           child: ListView(
-            shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),
             children: [
-              Image.asset("assets/images/portolink.png", height: 300),
-              const SizedBox(height: 15),
+              Image.asset("assets/images/portolink.png", height: 250),
+              const SizedBox(height: 30),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.person,
-                    color: Colors.black54
-                  ),
-                  Text(
-                    "" + admins.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24)
-                  ),
-                ],
+                  _prefixIcon(Icons.email),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const Text('Email', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0, color: Colors.black)),
+                      const SizedBox(height: 1),
+                      Text(admins.email, style: const TextStyle(fontSize: 16))
+                    ]
+                  )
+                ]
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.email,
-                    color: Colors.black54
-                  ),
-                  Text(
-                    "" + admins.email,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 24)
-                  ),
-                ],
-              ),
-            ],
-          ),
+              Row(mainAxisAlignment: MainAxisAlignment.center),
+              const SizedBox(height: 15)
+            ]
+          )
         ),
-        Container(
-          alignment: Alignment.bottomCenter,
+        Align(
+          alignment: const AlignmentDirectional(0, 0.7),
           child: ElevatedButton.icon(
             onPressed: () async {
               setState(() {
@@ -69,27 +77,21 @@ class _AccountViewState extends State<AccountView> {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToast("Logout Success", Colors.grey[300]);
-                  Navigator.pushReplacementNamed(
-                      context, LoginForm.routeName);
+                  ActivityServices.showToast("Logout Success", Colors.grey);
+                  Navigator.pushReplacementNamed(context, LoginForm.routeName);
                 } else {
                   setState(() {
                     isLoading = false;
                   });
-                  ActivityServices.showToast("Logout Failed", const Color(0xFFFF0000));
+                  ActivityServices.showToast("Logout Failed", Colors.red);
                 }
               });
             },
             icon: const Icon(Icons.logout),
-            label: const Text("Logout"),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.teal[200],
-              onPrimary: Colors.white,
-              elevation: 4
-            )
-          ),
-        ),
-      ],
+            label: const Text("Logout")
+          )
+        )
+      ]
     );
   }
 }

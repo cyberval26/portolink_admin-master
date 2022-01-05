@@ -7,8 +7,7 @@ class MyTheme{
       scaffoldBackgroundColor: Colors.white,
       primaryColor: const Color(0xFF14D7F3),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      brightness: Brightness.light,
-      fontFamily: GoogleFonts.permanentMarker().fontFamily
+      brightness: Brightness.light
     );
   }
   static ThemeData darkTheme(){
@@ -17,8 +16,7 @@ class MyTheme{
       scaffoldBackgroundColor: Colors.black,
       primaryColor: const Color(0xFF14D7F3),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      brightness: Brightness.dark,
-      fontFamily: GoogleFonts.permanentMarker().fontFamily
+      brightness: Brightness.dark
     );
   }
 }

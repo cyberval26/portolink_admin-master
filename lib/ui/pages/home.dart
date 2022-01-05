@@ -7,45 +7,35 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 class _HomeState extends State<Home> {
-  int _selectedIntex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    const AddTemplate(),
-    Catalog(),
-    const MyAccount()
+  bool isLoading = false;
+  int _selectedIndex = 0;
+  final List<Widget> _widgetOptions = <Widget>[
+    const Catalog(),
+    const Request(),
+    const Approved(),
+    const Profile()
   ];
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIntex = index;
+      _selectedIndex = index;
     });
-  }
-  @override
-  void initState() {
-    super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIntex)
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.note_add_rounded),
-            label: 'Add Template'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_rounded),
-            label: 'Catalog'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'My Account'
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Catalog'),
+          BottomNavigationBarItem(icon: Icon(Icons.checklist), label: 'Requests'),
+          BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Approved'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profiles')
         ],
-        currentIndex: _selectedIntex,
+        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        elevation: 0
       ),
     );
   }

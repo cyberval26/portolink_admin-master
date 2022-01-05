@@ -15,7 +15,6 @@ class AuthServices {
     token = await FirebaseMessaging.instance.getToken();
     await admCollection.doc(aid).set({
       'aid': aid,
-      'name': admins.name,
       'email': admins.email,
       'pass': admins.pass,
       'token': token,

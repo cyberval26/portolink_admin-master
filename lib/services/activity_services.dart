@@ -9,22 +9,10 @@ class ActivityServices {
   }
   static void showToast(String msg, Color mycolor) {
     Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: mycolor,
-        textColor: Colors.black,
-        fontSize: 14
-    );
-  }
-  static void showToast2(String msg, Color mycolor) {
-    Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: mycolor,
-        textColor: Colors.white,
-        fontSize: 14
+      msg: msg,
+      backgroundColor: mycolor,
+      textColor: Colors.white,
+      fontSize: 14
     );
   }
   static Container loadings() {
@@ -33,7 +21,7 @@ class ActivityServices {
       width: double.infinity,
       height: double.infinity,
       color: Colors.black54,
-      child:  const SpinKitRipple(size: 500, color: Color(0xFF14D7F3))
+      child: const SpinKitRipple(size: 500, color: Color(0xFF14D7F3))
     );
   }
   static String toIDR(String price) {

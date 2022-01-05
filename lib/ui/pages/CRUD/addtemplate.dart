@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class AddTemplate extends StatefulWidget {
   const AddTemplate({Key key}) : super(key: key);
@@ -15,18 +15,13 @@ class _AddTemplateState extends State<AddTemplate> {
   PickedFile imageFile;
   final ImagePicker imagePicker = ImagePicker();
   Future chooseFile(String type) async {
-    ImageSource imgSrc;
-    if (type == "camera") {
-      imgSrc = ImageSource.camera;
-    } else if (type == "gallery") {
-      imgSrc = ImageSource.gallery;
-    }
-    final selectedImage = await imagePicker.pickImage(
+    ImageSource imgSrc = ImageSource.gallery;
+    final selectedImage = await imagePicker.getImage(
       source: imgSrc,
-      imageQuality: 100,
+      imageQuality: 100
     );
     setState(() {
-      imageFile = selectedImage as PickedFile;
+      imageFile = selectedImage;
     });
   }
   void showFileDialog(BuildContext ctx) {
@@ -39,22 +34,13 @@ class _AddTemplateState extends State<AddTemplate> {
           actions: [
             ElevatedButton.icon(
               onPressed: () {
-                chooseFile("camera");
-              },
-              icon: const Icon(Icons.camera_alt),
-              label: const Text("Camera"),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
                 chooseFile("gallery");
               },
               icon: const Icon(Icons.folder_outlined),
               label: const Text("Gallery"),
-              style: ElevatedButton.styleFrom(
-                elevation: 0,
-              ),
-            ),
-          ],
+              style: ElevatedButton.styleFrom(elevation: 0)
+            )
+          ]
         );
       }
     );
@@ -81,7 +67,8 @@ class _AddTemplateState extends State<AddTemplate> {
         title: const Text('Add a New Template'),
         centerTitle: true
       ),
-      body: SizedBox(
+      body: Container(
+        color: Colors.white,
         width: double.infinity,
         height: double.infinity,
         child: Stack(
@@ -94,30 +81,26 @@ class _AddTemplateState extends State<AddTemplate> {
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
-                        const SizedBox(
-                          height: 40,
-                        ),
+                        const SizedBox(height: 40),
                         TextFormField(
                           controller: ctrlName,
                           keyboardType: TextInputType.name,
                           decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
                             labelText: "Template Name",
-                            prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.bookmark),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         TextFormField(
                           controller: ctrlDesc,
                           keyboardType: TextInputType.name,
@@ -126,130 +109,109 @@ class _AddTemplateState extends State<AddTemplate> {
                             fillColor: Colors.white, filled: true,
                             labelText: "Template Description",
                             prefixIcon: Icon(Icons.description),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         TextFormField(
                           controller: ctrlPrice,
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             fillColor: Colors.white, filled: true,
                             labelText: "Template Price",
-                            prefixIcon: Icon(Icons.money),
-                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.attach_money),
+                            border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
                             if (value.isEmpty) {
-                              return "Please fil the field!";
+                              return "Please fill the field!";
                             } else {
                               return null;
                             }
-                          },
+                          }
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
+                        const SizedBox(height: 24),
                         imageFile == null
-                            ? Row(
-                                children: <Widget>[
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      showFileDialog(context);
-                                    },
-                                    icon: const Icon(Icons.photo_camera),
-                                    label: const Text("Take Photo"),
-                                  ),
-                                  const SizedBox(
-                                    width: 16,
-                                  ),
-                                  const Text("File not found.", style: TextStyle(color: Colors.red))
-                                ],
-                              )
-                            : Row(
-                                children: <Widget>[
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      showFileDialog(context);
-                                    },
-                                    icon: const Icon(Icons.photo_camera),
-                                    label: const Text("Ulangi Foto"),
-                                  ),
-                                  const SizedBox(
-                                    width: 16,
-                                  ),
-                                  Semantics(
-                                    child: Image.file(
-                                      File(imageFile.path),
-                                      width: 100,
-                                    ),
-                                  )
-                                ],
-                              ),
-                        const SizedBox(
-                          height: 40,
+                        ? Row(
+                          children: <Widget>[
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                showFileDialog(context);
+                              },
+                              icon: const Icon(Icons.image),
+                              label: const Text("Pick Image")
+                            ),
+                            const SizedBox(width: 16),
+                            const Text("File not found.", style: TextStyle(color: Colors.red))
+                          ]
+                        )
+                        : Row(
+                          children: <Widget>[
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                showFileDialog(context);
+                              },
+                              icon: const Icon(Icons.image),
+                              label: const Text("Repick")
+                            ),
+                            const SizedBox(width: 16),
+                            Semantics(child: Image.file(File(imageFile.path), width: 100))
+                          ]
                         ),
+                        const SizedBox(height: 40),
                         ElevatedButton.icon(
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              //melanjutkan ke tahap berikutnya
                               setState(() {
                                 isLoading = true;
                               });
-                              Templates template = Templates(
+                              Templates templates = Templates(
                                 "",
                                 ctrlName.text,
                                 ctrlDesc.text,
                                 ctrlPrice.text,
-                                "",
+                                ""
                               );
-                              await TemplateServices.addTemplate(
-                                      template, imageFile)
-                                  .then((value) {
+                              await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToast(
-                                      "Add template successful!", Colors.green);
+                                  ActivityServices.showToast("Add Template Success", Colors.grey);
                                   clearForm();
                                   setState(() {
                                     isLoading = false;
                                   });
                                 } else {
-                                  ActivityServices.showToast(
-                                      "Add template failed.", Colors.red);
+                                    ActivityServices.showToast("Add Template Failed", Colors.red);
                                 }
                               });
                             } else {
-                              //kosongkan aja
-                              ActivityServices.showToast2(
-                                  "Please check all the fields.", Colors.red);
+                              ActivityServices.showToast("Please check all the fields", Colors.red);
                             }
                           },
-                          icon: const Icon(Icons.save),
-                          label: const Text("Post Template"),
-                          style: ElevatedButton.styleFrom(
-                              primary: Colors.green, elevation: 4),
-                        ),
-                      ],
-                    ),
-                  ),
+                          icon: const Icon(Icons.upload),
+                          label: const Text("Upload Template"),
+                          style: ElevatedButton.styleFrom(primary: Colors.green, elevation: 4)
+                        )
+                      ]
+                    )
+                  )
                 )
-              ],
+              ]
             ),
-            isLoading == true ? ActivityServices.loadings() : Container()
-          ],
-        ),
-      ),
+            isLoading == true
+            ? ActivityServices.loadings()
+            : Container()
+          ]
+        )
+      )
     );
   }
 }

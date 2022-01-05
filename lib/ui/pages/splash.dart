@@ -13,22 +13,29 @@ class _SplashState extends State<Splash> {
     _loadSplash();
   }
   _loadSplash() async {
-    var _duration = const Duration(seconds: 1);
+    var _duration = const Duration(seconds: 2);
     return Timer(_duration, checkAuth);
   }
   void checkAuth() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
       Navigator.pushReplacementNamed(context, Home.routeName);
-      ActivityServices.showToast(
-          "Welcome Back " + auth.currentUser.email, Colors.grey[300]);
+      ActivityServices.showToast("Welcome Back, " + auth.currentUser.email, Colors.grey);
     } else {
       Navigator.pushReplacementNamed(context, LoginForm.routeName);
     }
   }
   @override
   Widget build(BuildContext context) {
-    return const Image(image: AssetImage('assets/images/loading.gif')
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Container(
+        alignment: Alignment.center,
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:  [Image.asset("assets/images/portolink.png", height: 300)]
+        )
+      )
     );
   }
 }
