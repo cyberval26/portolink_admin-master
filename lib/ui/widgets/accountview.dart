@@ -6,6 +6,28 @@ class AccountView extends StatefulWidget {
   @override
   _AccountViewState createState() => _AccountViewState();
 }
+
+_prefixIcon(IconData iconData) {
+  return ConstrainedBox(
+    constraints: const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+    child: Container(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+        margin: const EdgeInsets.only(right: 8.0),
+        decoration: BoxDecoration(
+            color: Colors.blue[100].withOpacity(0.2),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+                bottomRight: Radius.circular(10.0))),
+        child: Icon(
+          iconData,
+          size: 20,
+          color: Colors.blue,
+        )),
+  );
+}
+
 class _AccountViewState extends State<AccountView> {
   bool isLoading = false;
   @override
@@ -17,13 +39,32 @@ class _AccountViewState extends State<AccountView> {
     return Stack(
       children: [
         Container(
+          padding: EdgeInsets.all(20),
           alignment: Alignment.topCenter,
           child: ListView(
-            shrinkWrap: true,
+           // shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),
             children: [
               Image.asset("assets/images/portolink.png", height: 300),
               const SizedBox(height: 15),
+              Row(
+                children: [
+                  _prefixIcon(Icons.email),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Email',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15.0,
+                              color: Colors.black)),
+                      SizedBox(height: 1),
+                      Text(admins.email),
+                    ],
+                  ),
+                ],
+              ),
+
               Row(mainAxisAlignment: MainAxisAlignment.center),
               const SizedBox(height: 15),
               Row(

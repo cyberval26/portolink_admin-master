@@ -32,7 +32,7 @@ class _RequestViewState extends State<RequestView> {
             softWrap: true
           ),
           subtitle: Text(
-            "Color : " + requests.color,
+            "Date : " + requests.createdAt,
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
             maxLines: 1,
             softWrap: true
@@ -55,13 +55,68 @@ class _RequestViewState extends State<RequestView> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text("Contact : " + requests.contact, style: const TextStyle(fontSize: 20)),
-                                const SizedBox(height: 48),
-                                Image.network(requests.photoReference),
-                                const SizedBox(height: 24),
-                                SelectableText(requests.photoReference),
-                                const SizedBox(height: 24),
-                                Text("Description : " + requests.requestDescription),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    const SizedBox(height: 48),
+                                    FadeInImage(
+                                      placeholder: NetworkImage(requests.photoReference),
+                                      image: NetworkImage(requests.photoReference),
+                                      imageErrorBuilder: (ctx, exception, stackTrace) {
+                                        return Container();
+                                      },
+                                    ),
+                                    const SizedBox(height: 24),
+                                    Text('Link Photo Reference',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    SelectableText(requests.photoReference),
+                                    const SizedBox(height: 24),
+                                    Text('Date',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    Text(requests.createdAt),
+                                    const SizedBox(height: 24),
+                                    Text('Item Name',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    Text(requests.templateName),
+                                    const SizedBox(height: 24),
+                                    Text('Color',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    Text(requests.color),
+                                    const SizedBox(height: 24),
+                                    Text('Contact',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    Text(requests.contact),
+                                    const SizedBox(height: 24),
+                                    Text('Request Description',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15.0,
+                                            color: Colors.black)),
+                                    SizedBox(height: 1),
+                                    Text(requests.requestDescription),
+
+                                  ],
+                                ),
                                 const SizedBox(height: 24)
                               ]
                             )

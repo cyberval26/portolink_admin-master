@@ -53,10 +53,10 @@ class TemplateServices {
       result = false;
     });
     if (imgFile != null) {
-      ref = FirebaseStorage.instance.ref().child("images").child(tDoc.id + "jpg");
+      ref = FirebaseStorage.instance.ref().child("images").child(id + "jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
-      await tCollection.doc(tDoc.id).update({'photo': imgUrl});
+      await tCollection.doc(id).update({'photo': imgUrl});
     }
     return result;
   }

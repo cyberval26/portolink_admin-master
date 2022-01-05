@@ -48,43 +48,65 @@ class _TemplateViewState extends State<TemplateView> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(templates.name, style: const TextStyle(fontSize: 50)),
-                                const SizedBox(height: 48),
+                                const SizedBox(height: 24),
                                 Image.network(templates.photo),
-                                const SizedBox(height: 48),
-                                Text("Description : " + templates.desc),
+                                const SizedBox(height: 18),
+                                Container(
+                                  width: 500,
+                                  child:   Align(
+                                    alignment: Alignment.center,
+                                    child: Text(templates.name, style:TextStyle(fontSize: 24,fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                                Text(ActivityServices.toIDR(templates.price) ,style: TextStyle(fontSize:18)),
                                 const SizedBox(height: 24),
-                                Text("Price: " + templates.price),
+                                Text( templates.desc, style: TextStyle(fontSize:18),),
                                 const SizedBox(height: 24),
-                                ElevatedButton.icon(
-                                  icon: const Icon(CupertinoIcons.pencil),
-                                  label: const Text("Update Data"),
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => EditTemplate(
-                                        tid: templates.tid,
-                                        name:templates.name,
-                                        desc: templates.desc,
-                                        price:templates.price,
-                                        photo: templates.photo
-                                      )
-                                    ));
-                                  }       
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        child:Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                          child: ElevatedButton.icon(
+                                              icon: const Icon(CupertinoIcons.pencil),
+                                              label: const Text("Update Data"),
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(
+                                                    builder: (context) => EditTemplate(
+                                                        tid: templates.tid,
+                                                        name:templates.name,
+                                                        desc: templates.desc,
+                                                        price:templates.price,
+                                                        photo: templates.photo
+                                                    )
+                                                ));
+                                              }
+                                          ),
+                                        )
+                                    ),
+                                    Expanded(
+                                        child:Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                            child: ElevatedButton.icon(
+                                                icon: const Icon(CupertinoIcons.trash_fill),
+                                                label: const Text("Delete Data"),
+                                                onPressed: () async {
+                                                  bool result = await TemplateServices.deleteTemplate(templates.tid);
+                                                  if (result) {
+                                                    ActivityServices.showToast("Delete Success", Colors.grey);
+                                                  } else {
+                                                    ActivityServices.showToast("Delete Failed", Colors.red);
+                                                  }
+                                                },
+                                                style: ElevatedButton.styleFrom(primary: Colors.red)
+                                            ),
+                                        ),
+                                    ),
+                                  ],
                                 ),
                                 const SizedBox(height: 24),
-                                ElevatedButton.icon(
-                                  icon: const Icon(CupertinoIcons.trash_fill),
-                                  label: const Text("Delete Data"),
-                                  onPressed: () async {
-                                    bool result = await TemplateServices.deleteTemplate(templates.tid);
-                                    if (result) {
-                                      ActivityServices.showToast("Delete Success", Colors.grey);
-                                    } else {
-                                      ActivityServices.showToast("Delete Failed", Colors.red);
-                                    }
-                                  },
-                                  style: ElevatedButton.styleFrom(primary: Colors.red)
-                                )
+
                               ]
                             )
                           ]
