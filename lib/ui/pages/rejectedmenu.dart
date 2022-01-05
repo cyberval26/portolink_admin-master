@@ -79,7 +79,7 @@ class _RejectedMenuState extends State<RejectedMenu> {
                                 ActivityServices.showToast("Reject Failed", Colors.red);
                               }
                             } else {
-                                ActivityServices.showToast("Please check all  the fields.", Colors.red);
+                                ActivityServices.showToast("Please check all the fields", Colors.red);
                             }
                           },
                           icon: const Icon(Icons.send),

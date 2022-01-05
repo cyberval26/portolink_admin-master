@@ -111,6 +111,12 @@ class _LoginFormState extends State<LoginForm> {
                                 });
                                 ActivityServices.showToast("Login Failed", Colors.red);
                               }
+                            } else {
+                              Fluttertoast.showToast(
+                                msg: "Please check all the fields",
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white
+                              );
                             }
                           },
                           icon: const Icon(Icons.login_rounded),

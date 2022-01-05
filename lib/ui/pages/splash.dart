@@ -20,7 +20,7 @@ class _SplashState extends State<Splash> {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
       Navigator.pushReplacementNamed(context, Home.routeName);
-      ActivityServices.showToast("Welcome Back " + auth.currentUser.email, Colors.grey);
+      ActivityServices.showToast("Welcome Back, " + auth.currentUser.email, Colors.grey);
     } else {
       Navigator.pushReplacementNamed(context, LoginForm.routeName);
     }
@@ -30,15 +30,12 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-          alignment: Alignment.center,
-          child:Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                Image.asset("assets/images/portolink.png", height: 300
-                ),
-              ]
-          )
-      ),
+        alignment: Alignment.center,
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:  [Image.asset("assets/images/portolink.png", height: 300)]
+        )
+      )
     );
   }
 }

@@ -3,7 +3,6 @@ part of 'services.dart';
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
   static CollectionReference admCollection = FirebaseFirestore.instance.collection("Admins");
-  static DocumentReference admDoc;
   static Future<String> signUp(Admins admins) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();

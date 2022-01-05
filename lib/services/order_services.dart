@@ -3,7 +3,6 @@ part of 'services.dart';
 class OrderServices{
    static FirebaseAuth auth = FirebaseAuth.instance;
    static CollectionReference orderCollection = FirebaseFirestore.instance.collection("Orders");
-   static DocumentReference orderDocument;
    static Reference ref;
    static UploadTask uploadTask;
    static String imgUrl;

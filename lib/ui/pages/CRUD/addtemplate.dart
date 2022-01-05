@@ -81,7 +81,7 @@ class _AddTemplateState extends State<AddTemplate> {
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
-                        const SizedBox( height: 40),
+                        const SizedBox(height: 40),
                         TextFormField(
                           controller: ctrlName,
                           keyboardType: TextInputType.name,
@@ -183,17 +183,17 @@ class _AddTemplateState extends State<AddTemplate> {
                               );
                               await TemplateServices.addTemplate(templates, imageFile).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToast("Add template successful!", Colors.grey);
+                                  ActivityServices.showToast("Add Template Success", Colors.grey);
                                   clearForm();
                                   setState(() {
                                     isLoading = false;
                                   });
                                 } else {
-                                    ActivityServices.showToast("Add template failed.", Colors.red);
+                                    ActivityServices.showToast("Add Template Failed", Colors.red);
                                 }
                               });
                             } else {
-                              ActivityServices.showToast("Please check all  the fields.", Colors.red);
+                              ActivityServices.showToast("Please check all the fields", Colors.red);
                             }
                           },
                           icon: const Icon(Icons.upload),

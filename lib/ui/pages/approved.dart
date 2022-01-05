@@ -17,7 +17,7 @@ class _ApprovedState extends State<Approved> {
         stream: templateCollection.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Failed to load data!");
+            return const Text("Failed to load data");
           }
           else if (snapshot.connectionState == ConnectionState.waiting) {
             return ActivityServices.loadings();

@@ -115,7 +115,7 @@ class _RegisterState extends State<Register> {
                               }
                             } else {
                               Fluttertoast.showToast(
-                                msg: "Please check the fields!",
+                                msg: "Please check all the fields",
                                 backgroundColor: Colors.red,
                                 textColor: Colors.white
                               );

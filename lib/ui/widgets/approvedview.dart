@@ -1,4 +1,4 @@
-  part of 'widgets.dart';
+part of 'widgets.dart';
 
 class ApprovedView extends StatefulWidget {
   const ApprovedView({Key key, this.requests}) : super(key: key);
@@ -12,7 +12,7 @@ class _ApprovedViewState extends State<ApprovedView> {
     Requests requests = widget.requests;
     if (requests == null) {
       return Container();
-    } 
+    }
     return Card(
       color: Colors.blue[100],
       elevation: 1,
@@ -21,8 +21,7 @@ class _ApprovedViewState extends State<ApprovedView> {
       child: Container(
         padding: const EdgeInsets.all(8),
         child: ListTile(
-          title: Text(
-            requests.templateName.toUpperCase(),
+          title: Text(requests.templateName.toUpperCase(),
             style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.bold,
@@ -31,9 +30,7 @@ class _ApprovedViewState extends State<ApprovedView> {
             maxLines: 1,
             softWrap: true
           ),
-          subtitle: Text(
-            "Color : " + requests.color,
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+          subtitle: Text("Color : " + requests.color, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
             maxLines: 1,
             softWrap: true
           ),
@@ -64,59 +61,34 @@ class _ApprovedViewState extends State<ApprovedView> {
                                       image: NetworkImage(requests.photoReference),
                                       imageErrorBuilder: (ctx, exception, stackTrace) {
                                         return Container();
-                                      },
+                                      }
                                     ),
                                     const SizedBox(height: 24),
-                                    Text('Link Photo Reference',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
+                                    const Text('Link Photo Reference', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
                                     SelectableText(requests.photoReference),
                                     const SizedBox(height: 24),
-                                    Text('Date',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
+                                    const Text('Date', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
                                     Text(requests.createdAt),
                                     const SizedBox(height: 24),
-                                    Text('Item Name',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
+                                    const Text('Item Name', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
                                     Text(requests.templateName),
                                     const SizedBox(height: 24),
-                                    Text('Color',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
+                                    const Text('Color', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
                                     Text(requests.color),
                                     const SizedBox(height: 24),
-                                    Text('Contact',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
+                                    const Text('Contact', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
                                     Text(requests.contact),
                                     const SizedBox(height: 24),
-                                    Text('Request Description',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.0,
-                                            color: Colors.black)),
-                                    SizedBox(height: 1),
-                                    Text(requests.requestDescription),
-
-                                  ],
-                                ),
+                                    const Text('Request Description', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0, color: Colors.black)),
+                                    const SizedBox(height: 1),
+                                    Text(requests.requestDescription)
+                                  ]
+                                )
                               ]
                             )
                           ]

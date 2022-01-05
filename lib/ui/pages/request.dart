@@ -17,7 +17,7 @@ class _RequestState extends State<Request> {
         stream: templateCollection.snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Failed to load data!");
+            return const Text("Failed to load data");
           }
           else if (snapshot.connectionState == ConnectionState.waiting) {
             return ActivityServices.loadings();
@@ -27,16 +27,16 @@ class _RequestState extends State<Request> {
               Requests requests;
               if(doc['status'] != "Finished") {
                 requests = Requests(
-                    doc['orderId'],
-                    doc['templateName'],
-                    doc['color'],
-                    doc['contact'],
-                    doc['requestDescription'],
-                    doc['photoReference'],
-                    doc['addBy'],
-                    doc['pendingBy'],
-                    doc['status'],
-                    doc['createdAt']
+                  doc['orderId'],
+                  doc['templateName'],
+                  doc['color'],
+                  doc['contact'],
+                  doc['requestDescription'],
+                  doc['photoReference'],
+                  doc['addBy'],
+                  doc['pendingBy'],
+                  doc['status'],
+                  doc['createdAt']
                 );
               }
               return RequestView(requests: requests);

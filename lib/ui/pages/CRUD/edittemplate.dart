@@ -200,18 +200,18 @@ class _EditTemplateState extends State<EditTemplate> {
                               );
                               await TemplateServices.updateTemplate(templates, imageFile, widget.tid, widget.photo).then((value) {
                                 if (value == true) {
-                                  ActivityServices.showToast("Update template successful!", Colors.grey);
+                                  ActivityServices.showToast("Update Template Success", Colors.grey);
                                   clearForm();
                                   Navigator.pushReplacementNamed(context, Home.routeName);
                                   setState(() {
                                     isLoading = false;
                                   });
                                 } else {
-                                  ActivityServices.showToast("Update template failed.", Colors.red);
+                                  ActivityServices.showToast("Update Template Failed", Colors.red);
                                 }
                               });
                             } else {
-                              ActivityServices.showToast("Please check all  the fields.", Colors.red);
+                              ActivityServices.showToast("Please check all the fields", Colors.red);
                             }
                           },
                           icon: const Icon(Icons.upload),
