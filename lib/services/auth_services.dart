@@ -61,6 +61,4 @@ class AuthServices {
     });
     return true;
   }
-  static Future<bool> deleteAccount() async {
-  }
 }

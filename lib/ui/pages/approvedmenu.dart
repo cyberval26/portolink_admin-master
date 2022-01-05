@@ -42,7 +42,7 @@ class _ApprovedMenuState extends State<ApprovedMenu> {
                         TextFormField(
                           controller: ctrlLink,
                           maxLines: 3,
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.url,
                           decoration: const InputDecoration(
                             fillColor: Colors.white,
                             filled: true,

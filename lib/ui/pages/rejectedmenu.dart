@@ -42,12 +42,12 @@ class _RejectedMenuState extends State<RejectedMenu> {
                         TextFormField(
                           controller: ctrlReason,
                           maxLines: 3,
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
                             fillColor: Colors.white,
                             filled: true,
                             labelText: "Reason",
-                            prefixIcon: Icon(Icons.link),
+                            prefixIcon: Icon(Icons.message),
                             border: OutlineInputBorder()
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,

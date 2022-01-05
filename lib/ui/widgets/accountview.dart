@@ -69,33 +69,6 @@ class _AccountViewState extends State<AccountView> {
             label: const Text("Logout"),
           )
         ),
-        // Align(
-        //   alignment: const AlignmentDirectional(0, 0.9),
-        //   child: ElevatedButton.icon(
-        //     onPressed: () async {
-        //       setState(() {
-        //         isLoading = true;
-        //       });
-        //       await AuthServices.deleteUser(admins.aid).then((value) {
-        //         if (value == true) {
-        //           setState(() {
-        //             isLoading = false;
-        //           });
-        //           ActivityServices.showToast("Delete Account Success", Colors.grey);
-        //           Navigator.pushReplacementNamed(context, LoginForm.routeName);
-        //         } else {
-        //           setState(() {
-        //             isLoading = false;
-        //           });
-        //           ActivityServices.showToast("Delete Account Failed", Colors.red);
-        //         }
-        //       });
-        //     },
-        //     icon: const Icon(Icons.clear),
-        //     label: const Text("Delete Account"),
-        //     style: ElevatedButton.styleFrom(primary: Colors.red)
-        //   )
-        // )
       ]
     );
   }
