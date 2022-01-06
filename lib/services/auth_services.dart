@@ -15,7 +15,7 @@ class AuthServices {
     await admCollection.doc(aid).set({
       'aid': aid,
       'email': admins.email,
-      'pass': admins.pass,
+      'pass': sha512.convert(utf8.encode(admins.pass)).toString(),
       'token': token,
       'createdAt': dateNow,
       'updatedAt': dateNow

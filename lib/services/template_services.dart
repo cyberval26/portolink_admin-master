@@ -27,7 +27,7 @@ class TemplateServices {
       'updatedAt': dateNow
     });
     if (tDoc != null) {
-      ref = FirebaseStorage.instance.ref().child("Images").child(tDoc.id + ".jpg");
+      ref = FirebaseStorage.instance.ref().child("TemplatePhotos").child(tDoc.id + ".jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
       tCollection.doc(tDoc.id).update({'tid': tDoc.id, 'photo': imgUrl});
@@ -53,7 +53,7 @@ class TemplateServices {
       result = false;
     });
     if (imgFile != null) {
-      ref = FirebaseStorage.instance.ref().child("Images").child(id + "jpg");
+      ref = FirebaseStorage.instance.ref().child("TemplatePhotos").child(id + "jpg");
       uploadTask = ref.putFile(File(imgFile.path));
       await uploadTask.whenComplete(() => ref.getDownloadURL().then((value) => imgUrl = value));
       await tCollection.doc(id).update({'photo': imgUrl});

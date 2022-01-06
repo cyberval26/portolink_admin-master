@@ -24,10 +24,8 @@ class _RejectedMenuState extends State<RejectedMenu> {
   Widget build(BuildContext context) {
     args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-        appBar: AppBar(
-            title: const Text("Rejected Menu"),
-        ),
-        resizeToAvoidBottomInset: false,
+      appBar: AppBar(title: const Text("Rejected Menu")),
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: Colors.white,
         width: double.infinity,
