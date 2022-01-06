@@ -31,7 +31,7 @@ class PendingServices {
     await Firebase.initializeApp();
     await pendingCollection.doc(id).update({
       'link': link,
-      'status': "Approved",
+      'status': "Approved"
     }).then((value) {
       result = true;
     }).catchError((onError) {
@@ -44,7 +44,7 @@ class PendingServices {
     await Firebase.initializeApp();
     await pendingCollection.doc(id).update({
       'reason': reason,
-      'status': "Rejected",
+      'status': "Rejected"
     }).then((value) {
       result = true;
     }).catchError((onError) {

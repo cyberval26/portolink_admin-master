@@ -10,7 +10,7 @@ class OrderServices{
     bool result = true;
     await Firebase.initializeApp();
     await orderCollection.doc(id).update({
-      'status' : "Finished",
+      'status' : "Finished"
     }).then((value) {
       result = true;
     }).catchError((onError){
